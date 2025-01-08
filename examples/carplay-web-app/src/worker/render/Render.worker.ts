@@ -96,23 +96,35 @@ export class RenderWorker {
   onFrame = (event: RenderEvent) => {
     const frameData = new Uint8Array(event.frameData)
 
-    // Check if the decoder is unconfigured, and configure it if necessary
     if (this.decoder.state === 'unconfigured') {
       const decoderConfig = getDecoderConfig(frameData)
+
       if (decoderConfig) {
-        console.log('Decoder Config:', decoderConfig) // Debug the config
+        // Debug the configuration and frame data to ensure they are correct.
+        console.log('Decoder Config:', decoderConfig)
         console.log('Frame Data:', frameData)
 
-        // Check if the decoder configuration is supported before calling configure()
-        if (this.decoder.isConfigSupported(decoderConfig)) {
-          this.decoder.configure(decoderConfig)
-        } else {
-          console.error('Decoder config is not supported.')
+        // Check if the configuration looks correct, specifically for H.264 and resolution
+        if (
+          decoderConfig.codec !== 'avc1' ||
+          decoderConfig.codedWidth <= 0 ||
+          decoderConfig.codedHeight <= 0
+        ) {
+          console.error('Invalid or unsupported configuration:', decoderConfig)
+          return // Avoid calling configure if the config is invalid.
         }
+
+        // If the config looks good, proceed with configuring the decoder.
+        try {
+          this.decoder.configure(decoderConfig)
+        } catch (error) {
+          console.error('Error during decoder configuration:', error)
+        }
+      } else {
+        console.error('Failed to get valid decoder configuration.')
       }
     }
 
-    // Proceed with decoding if the decoder is configured
     if (this.decoder.state === 'configured') {
       try {
         this.decoder.decode(
