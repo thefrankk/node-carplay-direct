@@ -38,31 +38,49 @@ function isKeyFrame(frameData: Uint8Array): boolean {
   return Boolean(idr)
 }
 
-const getDecoderConfig = (frameData: Uint8Array) => {
-  // Extract codec information from frame data (e.g., using the first bytes or some other method)
-  // You would need to inspect the actual frame data to find out what codec it's using
+function getDecoderConfig(frameData: Uint8Array): VideoDecoderConfig | null {
+  const spsNalu = getNaluFromStream(frameData, NaluTypes.SPS)
+  if (spsNalu) {
+    const sps = new SPS(spsNalu.nalu)
 
-  // Dummy example to show the profile/level structure:
-  const codec = 'avc1.64001E' // Change this dynamically based on actual frame data
+    // Extract MIME type (codec identifier)
+    const codec = sps.MIME
 
-  let profileLevel
-  if (codec.startsWith('avc1')) {
-    const levelHex = codec.slice(5) // Extracts the level (e.g., '64001E' or '640020')
-    profileLevel = parseInt(levelHex, 16) // Convert hex to number
+    // Extract profile and level from codec string (e.g., 'avc1.64001E' or 'avc1.640020')
+    const [profile, levelHex] = codec.split('.')
+    const level = parseInt(levelHex, 16) // Parse level as an integer
 
-    // Example: Handle different profiles and levels
-    switch (profileLevel) {
+    // Validate profile and level
+    if (profile !== 'avc1') {
+      console.error('Unsupported profile:', profile)
+      return null
+    }
+
+    // Check the level
+    let supportedLevel = false
+    switch (level) {
       case 0x640020: // Baseline Profile Level 2.0
-        return { codec: 'avc1.640020', codedWidth: 752, codedHeight: 704 }
       case 0x64001e: // Baseline Profile Level 3.1
-        return { codec: 'avc1.64001E', codedWidth: 752, codedHeight: 704 }
-      // Add more cases if needed, depending on what profile/level you expect
+        supportedLevel = true
+        break
       default:
-        console.error(`Unsupported codec: ${codec}`)
+        console.error('Unsupported level:', levelHex)
         return null
     }
-  }
 
+    if (!supportedLevel) {
+      return null // Return null if the level is unsupported
+    }
+
+    // Return valid configuration if supported
+    const decoderConfig: VideoDecoderConfig = {
+      codec: sps.MIME, // MIME type (e.g., 'avc1.64001E')
+      codedHeight: sps.picHeight, // Frame height
+      codedWidth: sps.picWidth, // Frame width
+    }
+
+    return decoderConfig
+  }
   return null
 }
 
