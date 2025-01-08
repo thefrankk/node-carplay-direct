@@ -96,13 +96,23 @@ export class RenderWorker {
   onFrame = (event: RenderEvent) => {
     const frameData = new Uint8Array(event.frameData)
 
+    // Check if the decoder is unconfigured, and configure it if necessary
     if (this.decoder.state === 'unconfigured') {
       const decoderConfig = getDecoderConfig(frameData)
       if (decoderConfig) {
         console.log('Decoder Config:', decoderConfig) // Debug the config
-        this.decoder.configure(decoderConfig)
+        console.log('Frame Data:', frameData)
+
+        // Check if the decoder configuration is supported before calling configure()
+        if (this.decoder.isConfigSupported(decoderConfig)) {
+          this.decoder.configure(decoderConfig)
+        } else {
+          console.error('Decoder config is not supported.')
+        }
       }
     }
+
+    // Proceed with decoding if the decoder is configured
     if (this.decoder.state === 'configured') {
       try {
         this.decoder.decode(
