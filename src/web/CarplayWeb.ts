@@ -44,8 +44,13 @@ export const findDevice = async (): Promise<USBDevice | null> => {
 }
 
 export const requestDevice = async (): Promise<USBDevice | null> => {
+  console.log('trying to get device');
   try {
     const { knownDevices } = DongleDriver
+
+     console.log('trying to get device 2', knownDevices)
+
+
     const device = await navigator.usb.requestDevice({
       filters: knownDevices,
     })

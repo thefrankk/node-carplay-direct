@@ -60,7 +60,8 @@ function getDecoderConfig(frameData: Uint8Array): VideoDecoderConfig | null {
     let supportedLevel = false
     switch (level) {
       case 0x640020: // Baseline Profile Level 2.0
-      case 0x64002a: // Baseline Profile Level 3.0 (or 3.1, depending on hardware)
+      case 0x64002a:
+      case 0x64001f: // Baseline Profile Level 3.0 (or 3.1, depending on hardware)
         supportedLevel = true
         break
       default:
