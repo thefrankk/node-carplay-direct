@@ -148,6 +148,8 @@ function App() {
 
   const checkDevice = useCallback(
     async (request: boolean = false) => {
+      console.log('Checking devices', request)
+
       const device = request ? await requestDevice() : await findDevice()
       if (device) {
         setDeviceFound(true)
