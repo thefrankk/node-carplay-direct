@@ -99,8 +99,8 @@ export class RenderWorker {
     if (this.decoder.state === 'unconfigured') {
       const decoderConfig = getDecoderConfig(frameData)
       if (decoderConfig) {
+        console.log('Decoder Config:', decoderConfig) // Debug the config
         this.decoder.configure(decoderConfig)
-        console.log(decoderConfig)
       }
     }
     if (this.decoder.state === 'configured') {
