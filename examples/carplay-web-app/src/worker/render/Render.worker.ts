@@ -93,58 +93,52 @@ export class RenderWorker {
     }
   }
 
-  onFrame = (event: RenderEvent) => {
+  onFrame = async (event: RenderEvent) => {
     const frameData = new Uint8Array(event.frameData)
 
-    // If the decoder is unconfigured, we attempt to configure it
-    // based on SPS/PPS data in the incoming frame.
+    // Only configure if the decoder is unconfigured:
     if (this.decoder.state === 'unconfigured') {
       const decoderConfig = getDecoderConfig(frameData)
-
-      if (decoderConfig) {
-        // Debug the configuration and frame data to ensure they are correct.
-        console.log('Decoder Config:', decoderConfig)
-        console.log('Frame Data:', frameData)
-
-        // Check if the configuration looks correct, specifically for H.264 and resolution.
-        if (
-          // Updated to allow "avc1.XXXX" variants:
-          !decoderConfig.codec.startsWith('avc1') ||
-          decoderConfig.codedWidth <= 0 ||
-          decoderConfig.codedHeight <= 0
-        ) {
-          console.error('Invalid or unsupported configuration:', decoderConfig)
-          return // Avoid calling configure if the config is invalid.
-        }
-
-        // Potential Solutions:
-        // 1. Ensure 'decoderConfig.codec' has a full H.264 FourCC (e.g., "avc1.640028")
-        //    if "avc1" alone doesn’t work on certain Chrome versions.
-        // 2. Add a valid 'description' field (AVCDecoderConfigurationRecord) in decoderConfig
-        //    with the SPS/PPS bytes from the bitstream.
-        // 3. Optionally specify hardwareAcceleration in decoderConfig, e.g.:
-        //      hardwareAcceleration: "prefer-hardware" or "fallback-software"
-        // 4. Make sure your environment or OS has H.264 support. Some Linux builds of Chromium
-        //    need extra codecs.
-
-        try {
-          this.decoder.configure(decoderConfig)
-        } catch (error) {
-          // Improved logging: show error name and message
-          console.error(
-            'Error during decoder configuration:',
-            (error as Error).name,
-            (error as Error).message,
-            error,
-          )
-        }
-      } else {
+      if (!decoderConfig) {
         console.error('Failed to get valid decoder configuration.')
+        return
+      }
+
+      // Debug logs:
+      console.log('Decoder Config:', decoderConfig)
+      console.log('Frame Data:', frameData)
+
+      // Example check for H.264 config validity (allowing "avc1.XXXX"):
+      if (
+        !decoderConfig.codec.startsWith('avc1') ||
+        decoderConfig.codedWidth <= 0 ||
+        decoderConfig.codedHeight <= 0
+      ) {
+        console.error('Invalid or unsupported configuration:', decoderConfig)
+        return
+      }
+
+      try {
+        // 1. Check support first:
+        const supportInfo = await VideoDecoder.isConfigSupported(decoderConfig)
+        if (!supportInfo.supported) {
+          console.error(
+            'Unsupported decoder configuration. Reason:',
+            supportInfo.config,
+          )
+          return
+        }
+
+        // 2. If supported, configure the decoder:
+        this.decoder.configure(decoderConfig)
+      } catch (error) {
+        // For example: NotSupportedError if the browser rejects it
+        console.error('Error during decoder configuration:', error)
+        return
       }
     }
 
-    // If the decoder is configured, push a new EncodedVideoChunk
-    // and let the decoder do its job.
+    // If the decoder is configured, decode the incoming frame chunk.
     if (this.decoder.state === 'configured') {
       try {
         this.decoder.decode(
