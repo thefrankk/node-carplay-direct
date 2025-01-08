@@ -18,6 +18,7 @@ import { CarPlayWorker } from './worker/types'
 import useCarplayAudio from './useCarplayAudio'
 import { useCarplayTouch } from './useCarplayTouch'
 import { InitEvent } from './worker/render/RenderEvents'
+import debug from 'debug'
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -183,6 +184,10 @@ function App() {
 
   const onClick = useCallback(() => {
     checkDevice(true)
+    console.log('Click on device')
+
+    const log = debug('app:component')
+    log('This is a debug log')
   }, [checkDevice])
 
   const sendTouchEvent = useCarplayTouch(carplayWorker, width, height)
@@ -208,7 +213,7 @@ function App() {
         >
           {deviceFound === false && (
             <button onClick={onClick} rel="noopener noreferrer">
-              Plug-In Carplay Dongle and Press
+              Plug-In Carplay Dongle and Press TEST
             </button>
           )}
           {deviceFound === true && (
