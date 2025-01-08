@@ -120,13 +120,28 @@ export class RenderWorker {
 
       try {
         // 1. Check support first:
-        const supportInfo = await VideoDecoder.isConfigSupported(decoderConfig)
-        if (!supportInfo.supported) {
+        try {
+          const supportInfo =
+            await VideoDecoder.isConfigSupported(decoderConfig)
+          if (!supportInfo.supported) {
+            console.error(
+              'Unsupported decoder configuration:',
+              supportInfo.config,
+            )
+            // Optionally, still try configuring to see if you get a more descriptive error:
+            this.decoder.configure(supportInfo.config)
+          } else {
+            // If it says it's supported, just configure normally:
+            this.decoder.configure(decoderConfig)
+          }
+        } catch (error) {
+          // Usually 'NotSupportedError'
           console.error(
-            'Unsupported decoder configuration. Reason:',
-            supportInfo.config,
+            'Error during decoder configuration:',
+            error.name,
+            error.message,
+            error,
           )
-          return
         }
 
         // 2. If supported, configure the decoder:
