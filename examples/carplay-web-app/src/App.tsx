@@ -247,6 +247,23 @@ function App() {
           id="video"
           style={isPlugged ? { height: '100%' } : { display: 'none' }}
         />
+        {isPlugged && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '10px',
+              left: '10px',
+              zIndex: 10, // Ensure it appears above the canvas
+            }}
+          >
+            <button onClick={() => console.log('Button 1 clicked')}>
+              Button 1
+            </button>
+            <button onClick={() => console.log('Button 2 clicked')}>
+              Button 2
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
