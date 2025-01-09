@@ -237,15 +237,24 @@ function App() {
         style={{
           height: '100%',
           width: '100%',
-          padding: 0,
-          margin: 0,
           display: 'flex',
+          justifyContent: 'center', // Horizontally center
+          alignItems: 'center', // Vertically center
+          position: 'relative',
         }}
       >
         <canvas
           ref={canvasRef}
           id="video"
-          style={isPlugged ? { height: '100%' } : { display: 'none' }}
+          style={
+            isPlugged
+              ? {
+                  display: 'block',
+                  height: '100%', // Adjust as needed
+                  width: '100%', // Adjust as needed
+                }
+              : { display: 'none' }
+          }
         />
         {isPlugged && (
           <div
@@ -253,7 +262,7 @@ function App() {
               position: 'absolute',
               bottom: '10px',
               left: '10px',
-              zIndex: 10, // Ensure it appears above the canvas
+              zIndex: 10,
             }}
           >
             <button onClick={() => console.log('Button 1 clicked')}>
