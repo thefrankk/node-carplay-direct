@@ -213,6 +213,7 @@ function App() {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
+        position: 'relative', // Ensure elements inside are positioned relative to this container
       }}
       id="main"
       className="App"
@@ -238,6 +239,7 @@ function App() {
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',
+                zIndex: 30, // Explicitly set z-index
               }}
             >
               Plug-In Carplay Dongle and Press
