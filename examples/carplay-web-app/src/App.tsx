@@ -19,7 +19,7 @@ import useCarplayAudio from './useCarplayAudio'
 import { useCarplayTouch } from './useCarplayTouch'
 import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
-import { FiHome } from 'react-icons/fi' // Feather Home Icon
+import { FiHome, FiLoader } from 'react-icons/fi' // Feather Home Icon
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -207,7 +207,7 @@ function App() {
   return (
     <div
       style={{
-        height: '90vh', // Use vh for consistent height
+        height: '100vh', // Use vh for consistent height
         touchAction: 'none',
         backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
         backgroundSize: 'cover',
@@ -336,6 +336,8 @@ function App() {
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
+          zIndex: 32,
+
           padding: '10px 0',
         }}
       >
@@ -347,6 +349,7 @@ function App() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            zIndex: 35,
             cursor: 'pointer',
             color: '#000000', // Ensure visibility against transparent background
           }}
