@@ -239,7 +239,7 @@ function App() {
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',
-                zIndex: 30, // Explicitly set z-index
+                zIndex: 32, // Explicitly set z-index
               }}
             >
               Plug-In Carplay Dongle and Press
@@ -270,6 +270,7 @@ function App() {
           justifyContent: 'center',
           alignItems: 'center',
           position: 'relative',
+          zIndex: 30, // Explicitly set z-index
         }}
       >
         <canvas
@@ -281,6 +282,7 @@ function App() {
                   display: 'block',
                   height: '100%',
                   width: '100%',
+                  zIndex: 30, // Explicitly set z-index
                 }
               : { display: 'none' }
           }
