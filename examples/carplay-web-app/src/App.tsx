@@ -97,6 +97,8 @@ function App() {
       switch (type) {
         case 'plugged':
           setPlugged(true)
+
+          console.log('plugged')
           break
         case 'unplugged':
           setPlugged(false)
