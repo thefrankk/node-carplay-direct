@@ -264,8 +264,8 @@ function App() {
         onPointerCancel={sendTouchEvent}
         onPointerOut={sendTouchEvent}
         style={{
-          height: '100%',
-          width: '100%',
+          height: '70%',
+          width: '70%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
