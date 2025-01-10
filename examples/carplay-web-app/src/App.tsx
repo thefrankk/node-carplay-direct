@@ -19,6 +19,7 @@ import useCarplayAudio from './useCarplayAudio'
 import { useCarplayTouch } from './useCarplayTouch'
 import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
+import { FiHome } from 'react-icons/fi' // Feather Home Icon
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -186,6 +187,11 @@ function App() {
     checkDevice()
   }, [carplayWorker, checkDevice])
 
+  const navigateHome = useCallback(() => {
+    console.log('Navigating to Home')
+    // Add navigation logic here
+  }, [])
+
   const onClick = useCallback(() => {
     checkDevice(true)
     console.log('Click on device')
@@ -200,8 +206,15 @@ function App() {
 
   return (
     <div
-      style={{ height: '100%', touchAction: 'none' }}
-      id={'main'}
+      style={{
+        height: '90vh', // Use vh for consistent height
+        touchAction: 'none',
+        backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}
+      id="main"
       className="App"
     >
       {isLoading && (
@@ -216,8 +229,18 @@ function App() {
           }}
         >
           {deviceFound === false && (
-            <button onClick={onClick} rel="noopener noreferrer">
-              Plug-In Carplay Dongle and Press TEST
+            <button
+              onClick={onClick}
+              rel="noopener noreferrer"
+              style={{
+                padding: '10px 20px',
+                backgroundColor: '#ffffff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+              }}
+            >
+              Plug-In Carplay Dongle and Press
             </button>
           )}
           {deviceFound === true && (
@@ -242,8 +265,8 @@ function App() {
           height: '100%',
           width: '100%',
           display: 'flex',
-          justifyContent: 'center', // Horizontally center
-          alignItems: 'center', // Vertically center
+          justifyContent: 'center',
+          alignItems: 'center',
           position: 'relative',
         }}
       >
@@ -254,8 +277,8 @@ function App() {
             isPlugged
               ? {
                   display: 'block',
-                  height: '100%', // Adjust as needed
-                  width: '100%', // Adjust as needed
+                  height: '100%',
+                  width: '100%',
                 }
               : { display: 'none' }
           }
@@ -269,17 +292,66 @@ function App() {
               zIndex: 10,
             }}
           >
-            <button onClick={() => console.log('Button 1 clicked')}>
+            <button
+              onClick={() => console.log('Button 1 clicked')}
+              style={{
+                padding: '10px 15px',
+                backgroundColor: '#ffffff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                marginRight: '10px',
+              }}
+            >
               Button 1
             </button>
-            <button onClick={() => console.log('Button 2 clicked')}>
+            <button
+              onClick={() => console.log('Button 2 clicked')}
+              style={{
+                padding: '10px 15px',
+                backgroundColor: '#ffffff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+              }}
+            >
               Button 2
             </button>
           </div>
         )}
       </div>
+      {/* Bottom Navigation */}
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)', // Slight transparency
+          borderTop: '1px solid #dee2e6',
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          padding: '10px 0',
+        }}
+      >
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            border: 'none',
+            fontSize: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            color: '#000000', // Ensure visibility against transparent background
+          }}
+          onClick={navigateHome}
+        >
+          <FiHome />
+        </button>
+      </div>
     </div>
   )
 }
-
 export default App
