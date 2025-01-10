@@ -19,7 +19,7 @@ import useCarplayAudio from './useCarplayAudio'
 import { useCarplayTouch } from './useCarplayTouch'
 import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
-import { FiHome, FiLoader } from 'react-icons/fi' // Feather Home Icon
+import { FiHome } from 'react-icons/fi' // Feather Home Icon
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -204,10 +204,79 @@ function App() {
 
   const isLoading = !isPlugged
 
+  //   return (
+  //     <div
+  //       style={{ height: '100%', touchAction: 'none' }}
+  //       id={'main'}
+  //       className="App"
+  //     >
+  //       {isLoading && (
+  //         <div
+  //           style={{
+  //             position: 'absolute',
+  //             width: '100%',
+  //             height: '100%',
+  //             display: 'flex',
+  //             justifyContent: 'center',
+  //             alignItems: 'center',
+  //           }}
+  //         >
+  //           {deviceFound === false && (
+  //             <button onClick={onClick} rel="noopener noreferrer">
+  //               Plug-In Carplay Dongle and Press
+  //             </button>
+  //           )}
+  //           {deviceFound === true && (
+  //             <RotatingLines
+  //               strokeColor="grey"
+  //               strokeWidth="5"
+  //               animationDuration="0.75"
+  //               width="96"
+  //               visible={true}
+  //             />
+  //           )}
+  //         </div>
+  //       )}
+  //       <div
+  //         id="videoContainer"
+  //         onPointerDown={sendTouchEvent}
+  //         onPointerMove={sendTouchEvent}
+  //         onPointerUp={sendTouchEvent}
+  //         onPointerCancel={sendTouchEvent}
+  //         onPointerOut={sendTouchEvent}
+  //         style={{
+  //           height: '75%',
+  //           width: '75%',
+  //           top: '50%', // Move the container down by 50% of its parent's height
+  //           left: '50%', // Move the container right by 50% of its parent's width
+  //           transform: 'translate(-50%, -50%)', // Offset the container back by half its size
+  //           padding: 0,
+  //           margin: 0,
+  //           display: 'flex',
+  //         }}
+  //       >
+  //         <canvas
+  //           ref={canvasRef}
+  //           id="video"
+  //           style={isPlugged ? { height: '100%' } : { display: 'none' }}
+  //         />
+  //       </div>
+  //     </div>
+  //   )
+  // }
+
   return (
     <div
-      style={{ height: '100%', touchAction: 'none' }}
-      id={'main'}
+      style={{
+        height: '100vh', // Use vh for consistent height
+        touchAction: 'none',
+        backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        position: 'relative', // Ensure elements inside are positioned relative to this container
+      }}
+      id="main"
       className="App"
     >
       {isLoading && (
@@ -222,7 +291,18 @@ function App() {
           }}
         >
           {deviceFound === false && (
-            <button onClick={onClick} rel="noopener noreferrer">
+            <button
+              onClick={onClick}
+              rel="noopener noreferrer"
+              style={{
+                padding: '10px 20px',
+                backgroundColor: '#ffffff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                zIndex: 32, // Explicitly set z-index
+              }}
+            >
               Plug-In Carplay Dongle and Press
             </button>
           )}
@@ -245,187 +325,107 @@ function App() {
         onPointerCancel={sendTouchEvent}
         onPointerOut={sendTouchEvent}
         style={{
-          height: '75%',
-          width: '75%',
+          height: '80%',
+          width: '80%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          //position: 'absolute', // Absolute positioning for centering
           top: '50%', // Move the container down by 50% of its parent's height
           left: '50%', // Move the container right by 50% of its parent's width
           transform: 'translate(-50%, -50%)', // Offset the container back by half its size
-          padding: 0,
-          margin: 0,
-          display: 'flex',
+          // zIndex: 31, // Ensure it stays above other elements
+          backgroundColor: 'rgba(0, 0, 0, 0.1)', // Optional: Add a background to visualize the container
+          touchAction: 'none', // Ensure touch actions are passed to canvas
         }}
       >
         <canvas
           ref={canvasRef}
           id="video"
-          style={isPlugged ? { height: '100%' } : { display: 'none' }}
+          style={
+            isPlugged
+              ? {
+                  display: 'block',
+                  height: '100%',
+                  width: '100%',
+                  // zIndex: 30, // Explicitly set z-index
+                  touchAction: 'none', // Ensure touch actions are passed to canvas
+                }
+              : { display: 'none' }
+          }
         />
+        {isPlugged && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '10px',
+              left: '10px',
+              zIndex: 10,
+            }}
+          >
+            <button
+              onClick={() => console.log('Button 1 clicked')}
+              style={{
+                padding: '10px 15px',
+                backgroundColor: '#ffffff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                marginRight: '10px',
+              }}
+            >
+              Button 1
+            </button>
+            <button
+              onClick={() => console.log('Button 2 clicked')}
+              style={{
+                padding: '10px 15px',
+                backgroundColor: '#ffffff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+              }}
+            >
+              Button 2
+            </button>
+          </div>
+        )}
+      </div>
+      {/* Bottom Navigation */}
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          backgroundColor: 'rgba(37, 38, 41, 0.9)', // Slight transparency
+          borderTop: '1px solid #dee2e6',
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          zIndex: 32,
+
+          padding: '10px 0',
+        }}
+      >
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            border: 'none',
+            fontSize: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 35,
+            cursor: 'pointer',
+            color: '#000000', // Ensure visibility against transparent background
+          }}
+          onClick={navigateHome}
+        >
+          <FiHome color="white" />;
+        </button>
       </div>
     </div>
   )
 }
-
-//   return (
-//     <div
-//     // style={{
-//     //   height: '100vh', // Use vh for consistent height
-//     //   touchAction: 'none',
-//     //   // backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
-//     //   backgroundSize: 'cover',
-//     //   backgroundRepeat: 'no-repeat',
-//     //   backgroundPosition: 'center',
-//     //   // position: 'relative', // Ensure elements inside are positioned relative to this container
-//     // }}
-//     // id="main"
-//     // className="App"
-//     >
-//       {isLoading && (
-//         <div
-//           style={{
-//             position: 'absolute',
-//             width: '100%',
-//             height: '100%',
-//             display: 'flex',
-//             justifyContent: 'center',
-//             alignItems: 'center',
-//           }}
-//         >
-//           {deviceFound === false && (
-//             <button
-//               onClick={onClick}
-//               rel="noopener noreferrer"
-//               style={{
-//                 padding: '10px 20px',
-//                 backgroundColor: '#ffffff',
-//                 border: 'none',
-//                 borderRadius: '5px',
-//                 cursor: 'pointer',
-//                 zIndex: 32, // Explicitly set z-index
-//               }}
-//             >
-//               Plug-In Carplay Dongle and Press
-//             </button>
-//           )}
-//           {deviceFound === true && (
-//             <RotatingLines
-//               strokeColor="grey"
-//               strokeWidth="5"
-//               animationDuration="0.75"
-//               width="96"
-//               visible={true}
-//             />
-//           )}
-//         </div>
-//       )}
-//       <div
-//         id="videoContainer"
-//         onPointerDown={sendTouchEvent}
-//         onPointerMove={sendTouchEvent}
-//         onPointerUp={sendTouchEvent}
-//         onPointerCancel={sendTouchEvent}
-//         onPointerOut={sendTouchEvent}
-//         style={{
-//           height: '80%',
-//           width: '80%',
-//           display: 'flex',
-//           justifyContent: 'center',
-//           alignItems: 'center',
-//           position: 'absolute', // Absolute positioning for centering
-//           top: '50%', // Move the container down by 50% of its parent's height
-//           left: '50%', // Move the container right by 50% of its parent's width
-//           transform: 'translate(-50%, -50%)', // Offset the container back by half its size
-//           // zIndex: 31, // Ensure it stays above other elements
-//           backgroundColor: 'rgba(0, 0, 0, 0.1)', // Optional: Add a background to visualize the container
-//           touchAction: 'none', // Ensure touch actions are passed to canvas
-//         }}
-//       >
-//         <canvas
-//           ref={canvasRef}
-//           id="video"
-//           style={
-//             isPlugged
-//               ? {
-//                   display: 'block',
-//                   height: '100%',
-//                   width: '100%',
-//                   // zIndex: 30, // Explicitly set z-index
-//                   touchAction: 'none', // Ensure touch actions are passed to canvas
-//                 }
-//               : { display: 'none' }
-//           }
-//         />
-//         {isPlugged && (
-//           <div
-//             style={{
-//               position: 'absolute',
-//               bottom: '10px',
-//               left: '10px',
-//               zIndex: 10,
-//             }}
-//           >
-//             <button
-//               onClick={() => console.log('Button 1 clicked')}
-//               style={{
-//                 padding: '10px 15px',
-//                 backgroundColor: '#ffffff',
-//                 border: 'none',
-//                 borderRadius: '5px',
-//                 cursor: 'pointer',
-//                 marginRight: '10px',
-//               }}
-//             >
-//               Button 1
-//             </button>
-//             <button
-//               onClick={() => console.log('Button 2 clicked')}
-//               style={{
-//                 padding: '10px 15px',
-//                 backgroundColor: '#ffffff',
-//                 border: 'none',
-//                 borderRadius: '5px',
-//                 cursor: 'pointer',
-//               }}
-//             >
-//               Button 2
-//             </button>
-//           </div>
-//         )}
-//       </div>
-//       {/* Bottom Navigation */}
-//       {/* <div
-//         style={{
-//           position: 'fixed',
-//           bottom: 0,
-//           left: 0,
-//           width: '100%',
-//           backgroundColor: 'rgba(37, 38, 41, 0.9)', // Slight transparency
-//           borderTop: '1px solid #dee2e6',
-//           display: 'flex',
-//           justifyContent: 'space-around',
-//           alignItems: 'center',
-//           zIndex: 32,
-
-//           padding: '10px 0',
-//         }}
-//       >
-//         <button
-//           style={{
-//             backgroundColor: 'transparent',
-//             border: 'none',
-//             fontSize: '24px',
-//             display: 'flex',
-//             alignItems: 'center',
-//             justifyContent: 'center',
-//             zIndex: 35,
-//             cursor: 'pointer',
-//             color: '#000000', // Ensure visibility against transparent background
-//           }}
-//           onClick={navigateHome}
-//         >
-//           <FiHome />
-//         </button>
-//       </div> */}
-//     </div>
-//   )
-// }
 export default App
