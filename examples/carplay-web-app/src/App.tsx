@@ -101,6 +101,8 @@ function App() {
           console.log('plugged')
           break
         case 'unplugged':
+          console.log('unplugged')
+
           setPlugged(false)
           break
         case 'requestBuffer':
