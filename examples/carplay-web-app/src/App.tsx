@@ -357,7 +357,7 @@ function App() {
       <div
         style={{
           position: 'fixed',
-          bottom: 8,
+          bottom: 0,
           left: 0,
           width: '100%',
           backgroundColor: 'rgba(37, 38, 41, 0.9)', // Slight transparency
@@ -366,7 +366,7 @@ function App() {
           alignItems: 'center',
           zIndex: 32,
 
-          padding: '10px 0',
+          padding: '20px 0',
         }}
       >
         <button
@@ -383,7 +383,7 @@ function App() {
           }}
           onClick={navigateHome}
         >
-          <FiHome color="white" />;
+          <FiHome color="white" size={32} />;
         </button>
       </div>
     </div>
