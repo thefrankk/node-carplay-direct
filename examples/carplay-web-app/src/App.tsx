@@ -20,6 +20,7 @@ import { useCarplayTouch } from './useCarplayTouch'
 import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
 import { FiArrowLeft, FiBattery, FiHome } from 'react-icons/fi' // Feather Home Icon
+import { useSocketManager } from './SocketManager'
 
 const width = window.innerWidth * 0.82
 const height = window.innerHeight * 0.82
@@ -45,6 +46,13 @@ function App() {
   const [canvasElement, setCanvasElement] = useState<HTMLCanvasElement | null>(
     null,
   )
+
+  const { sendMessage, state } = useSocketManager('ws://127.0.0.1:12345')
+
+  useEffect(() => {
+    // You can send an initial message if needed when the app starts
+    sendMessage('Initial connection message from App')
+  }, [sendMessage])
 
   const renderWorker = useMemo(() => {
     if (!canvasElement) return
@@ -451,7 +459,7 @@ function App() {
           bottom: 0,
           left: 0,
           width: '100%',
-          backgroundColor: 'rgba(77, 79, 85, 0.9)', // Slight transparency
+          backgroundColor: 'rgba(66, 68, 73, 0.9)', // Slight transparency
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
