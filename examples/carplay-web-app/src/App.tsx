@@ -331,7 +331,6 @@ function App() {
           justifyContent: 'center',
           alignItems: 'center',
           margin: 'auto', // Automatically center horizontally and vertically
-          zIndex: 30, // Ensure it stays above other elements
           touchAction: 'none', // Ensure touch actions are passed to canvas
         }}
       >
