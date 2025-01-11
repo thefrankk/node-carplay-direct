@@ -325,12 +325,12 @@ function App() {
         onPointerCancel={sendTouchEvent}
         onPointerOut={sendTouchEvent}
         style={{
-          height: '70%', // Resize container height
-          width: '70%', // Resize container width
-          // display: 'flex',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // margin: 'auto', // Automatically center horizontally and vertically
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
           touchAction: 'none', // Ensure touch actions are passed to canvas
         }}
       >
