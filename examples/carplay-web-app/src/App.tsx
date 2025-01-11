@@ -21,8 +21,8 @@ import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
 import { FiHome } from 'react-icons/fi' // Feather Home Icon
 
-const width = window.innerWidth * 0.85
-const height = window.innerHeight * 0.85
+const width = window.innerWidth * 0.82
+const height = window.innerHeight * 0.82
 
 const videoChannel = new MessageChannel()
 const micChannel = new MessageChannel()
@@ -326,8 +326,8 @@ function App() {
         onPointerOut={sendTouchEvent}
         style={{
           position: 'absolute',
-          width: '85%',
-          height: '85%',
+          width: '82%',
+          height: '82%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -357,7 +357,7 @@ function App() {
       <div
         style={{
           position: 'fixed',
-          bottom: 0,
+          bottom: 8,
           left: 0,
           width: '100%',
           backgroundColor: 'rgba(37, 38, 41, 0.9)', // Slight transparency
