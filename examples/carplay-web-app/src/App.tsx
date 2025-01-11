@@ -21,8 +21,8 @@ import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
 import { FiHome } from 'react-icons/fi' // Feather Home Icon
 
-const width = window.innerWidth * 0.8
-const height = window.innerHeight * 0.8
+const width = window.innerWidth * 0.85
+const height = window.innerHeight * 0.85
 
 const videoChannel = new MessageChannel()
 const micChannel = new MessageChannel()
@@ -326,8 +326,8 @@ function App() {
         onPointerOut={sendTouchEvent}
         style={{
           position: 'absolute',
-          width: '80%',
-          height: '80%',
+          width: '85%',
+          height: '85%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -352,42 +352,6 @@ function App() {
               : { display: 'none' }
           }
         />
-        {isPlugged && (
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '10px',
-              left: '10px',
-              zIndex: 10,
-            }}
-          >
-            <button
-              onClick={() => console.log('Button 1 clicked')}
-              style={{
-                padding: '10px 15px',
-                backgroundColor: '#ffffff',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                marginRight: '10px',
-              }}
-            >
-              Button 1
-            </button>
-            <button
-              onClick={() => console.log('Button 2 clicked')}
-              style={{
-                padding: '10px 15px',
-                backgroundColor: '#ffffff',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer',
-              }}
-            >
-              Button 2
-            </button>
-          </div>
-        )}
       </div>
       {/* Bottom Navigation */}
       <div
