@@ -390,7 +390,7 @@ function App() {
           display: 'flex',
           justifyContent: 'space-between', // Distribute left and right sections
           alignItems: 'center',
-          width: '10%', // Reduce width to bring sections closer
+          width: '25%', // Reduce width to bring sections closer
         }}
       >
         {/* Left Section: 120 and MPH */}
@@ -404,7 +404,7 @@ function App() {
         >
           <span
             style={{
-              fontSize: '28px',
+              fontSize: '30px',
               fontWeight: 'bold',
               color: 'rgba(255, 255, 255, 1)',
             }}
@@ -413,7 +413,7 @@ function App() {
           </span>
           <span
             style={{
-              fontSize: '12px',
+              fontSize: '15px',
               fontWeight: 'normal',
               color: 'rgba(255, 255, 255, 1)',
             }}
@@ -432,7 +432,7 @@ function App() {
         >
           <span
             style={{
-              fontSize: '16px',
+              fontSize: '20px',
               fontWeight: 'bold',
               marginRight: '5px',
               color: 'rgba(255, 255, 255, 1)',
