@@ -19,7 +19,7 @@ import useCarplayAudio from './useCarplayAudio'
 import { useCarplayTouch } from './useCarplayTouch'
 import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
-import { FiHome } from 'react-icons/fi' // Feather Home Icon
+import { FiArrowLeft, FiBattery, FiHome } from 'react-icons/fi' // Feather Home Icon
 
 const width = window.innerWidth * 0.82
 const height = window.innerHeight * 0.82
@@ -353,6 +353,97 @@ function App() {
           }
         />
       </div>
+      {/* Left Icon */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '20px', // Position 10px from the left edge
+          top: '50%', // Center vertically
+          transform: 'translateY(-50%)',
+          fontSize: '24px',
+          color: '#000', // Change to your desired color
+        }}
+      >
+        <FiHome color="white" size={38} />
+      </div>
+      {/* Right Icon */}
+      <div
+        style={{
+          position: 'absolute',
+          right: '10px', // Position 10px from the right edge
+          top: '50%', // Center vertically
+          transform: 'translateY(-50%)',
+          fontSize: '24px',
+          color: '#000', // Change to your desired color
+        }}
+      >
+        <FiHome color="white" size={38} />
+      </div>
+
+      {/* Top Text and Icons */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '10px', // Position near the top of the screen
+          left: '50%',
+          transform: 'translateX(-50%)', // Center horizontally
+          display: 'flex',
+          justifyContent: 'space-between', // Distribute left and right sections
+          alignItems: 'center',
+          width: '10%', // Reduce width to bring sections closer
+        }}
+      >
+        {/* Left Section: 120 and MPH */}
+        <div
+          style={{
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column', // Stack "120" and "MPH"
+            alignItems: 'center',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '28px',
+              fontWeight: 'bold',
+              color: 'rgba(255, 255, 255, 1)',
+            }}
+          >
+            120
+          </span>
+          <span
+            style={{
+              fontSize: '12px',
+              fontWeight: 'normal',
+              color: 'rgba(255, 255, 255, 1)',
+            }}
+          >
+            MPH
+          </span>
+        </div>
+
+        {/* Right Section: Fuel Text and Icon */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            textAlign: 'right',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '16px',
+              fontWeight: 'bold',
+              marginRight: '5px',
+              color: 'rgba(255, 255, 255, 1)',
+            }}
+          >
+            55%
+          </span>
+          <FiBattery color="green" size={36} />
+        </div>
+      </div>
+
       {/* Bottom Navigation */}
       <div
         style={{
@@ -360,13 +451,13 @@ function App() {
           bottom: 0,
           left: 0,
           width: '100%',
-          backgroundColor: 'rgba(51, 52, 56, 0.9)', // Slight transparency
+          backgroundColor: 'rgba(77, 79, 85, 0.9)', // Slight transparency
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
           zIndex: 32,
 
-          padding: '18px 0',
+          padding: '20px 0',
         }}
       >
         <button
