@@ -327,7 +327,7 @@ function App() {
         style={{
           height: '70%', // Resize container height
           width: '70%', // Resize container width
-          display: 'flex',
+          // display: 'flex',
           // justifyContent: 'center',
           // alignItems: 'center',
           // margin: 'auto', // Automatically center horizontally and vertically
