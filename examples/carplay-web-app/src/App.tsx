@@ -341,8 +341,8 @@ function App() {
             isPlugged
               ? {
                   display: 'block',
-                  height: '100%',
-                  width: '100%',
+                  height: '70%',
+                  width: '70%',
                   // zIndex: 30, // Explicitly set z-index
                   touchAction: 'none', // Ensure touch actions are passed to canvas
                 }
