@@ -47,7 +47,7 @@ function App() {
     null,
   )
 
-  const { sendMessage, state } = useSocketManager('ws://127.0.0.1:12345')
+  const { sendMessage, state } = useSocketManager('ws://localhost:8080')
 
   useEffect(() => {
     // You can send an initial message if needed when the app starts
