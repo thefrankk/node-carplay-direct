@@ -325,17 +325,13 @@ function App() {
         onPointerCancel={sendTouchEvent}
         onPointerOut={sendTouchEvent}
         style={{
-          height: '80%',
-          width: '80%',
+          height: '70%', // Resize container height
+          width: '70%', // Resize container width
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          //position: 'absolute', // Absolute positioning for centering
-          top: '50%', // Move the container down by 50% of its parent's height
-          left: '50%', // Move the container right by 50% of its parent's width
-          transform: 'translate(-50%, -50%)', // Offset the container back by half its size
-          // zIndex: 31, // Ensure it stays above other elements
-          backgroundColor: 'rgba(0, 0, 0, 0.1)', // Optional: Add a background to visualize the container
+          margin: 'auto', // Automatically center horizontally and vertically
+          zIndex: 30, // Ensure it stays above other elements
           touchAction: 'none', // Ensure touch actions are passed to canvas
         }}
       >
@@ -399,7 +395,6 @@ function App() {
           left: 0,
           width: '100%',
           backgroundColor: 'rgba(37, 38, 41, 0.9)', // Slight transparency
-          borderTop: '1px solid #dee2e6',
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
