@@ -326,8 +326,8 @@ function App() {
         onPointerOut={sendTouchEvent}
         style={{
           position: 'absolute',
-          width: '80%',
-          height: '80%',
+          width: '100%',
+          height: '100%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -341,8 +341,8 @@ function App() {
             isPlugged
               ? {
                   display: 'block',
-                  height: '80%',
-                  width: '80%',
+                  height: '100%',
+                  width: '100%',
                   // zIndex: 30, // Explicitly set z-index
                   touchAction: 'none', // Ensure touch actions are passed to canvas
                 }
