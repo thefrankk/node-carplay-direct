@@ -21,8 +21,8 @@ import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
 import { FiHome } from 'react-icons/fi' // Feather Home Icon
 
-const width = window.innerWidth
-const height = window.innerHeight
+const width = window.innerWidth * 0.8
+const height = window.innerHeight * 0.8
 
 const videoChannel = new MessageChannel()
 const micChannel = new MessageChannel()
@@ -283,8 +283,8 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            width: '100%',
-            height: '100%',
+            width: '80%',
+            height: '80%',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
