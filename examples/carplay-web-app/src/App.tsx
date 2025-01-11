@@ -265,24 +265,6 @@ function App() {
   //   )
   // }
 
-  const handleTouchEvent = event => {
-    if (!canvasRef.current) return
-
-    const canvas = canvasRef.current
-    const rect = canvas.getBoundingClientRect() // Get canvas position and size
-    const scaleX = canvas.width / rect.width // Scale factor for X
-    const scaleY = canvas.height / rect.height // Scale factor for Y
-
-    // Adjust touch coordinates
-    const touchX = (event.clientX - rect.left) * scaleX
-    const touchY = (event.clientY - rect.top) * scaleY
-
-    console.log('Touch Coordinates:', { x: touchX, y: touchY })
-
-    // Pass calibrated coordinates to your logic
-    sendTouchEvent({ x: touchX, y: touchY, type: event.type })
-  }
-
   return (
     <div
       style={{
@@ -337,11 +319,11 @@ function App() {
       )}
       <div
         id="videoContainer"
-        onPointerDown={event => handleTouchEvent(event)}
-        onPointerMove={event => handleTouchEvent(event)}
-        onPointerUp={event => handleTouchEvent(event)}
-        onPointerCancel={event => handleTouchEvent(event)}
-        onPointerOut={event => handleTouchEvent(event)}
+        onPointerDown={sendTouchEvent}
+        onPointerMove={sendTouchEvent}
+        onPointerUp={sendTouchEvent}
+        onPointerCancel={sendTouchEvent}
+        onPointerOut={sendTouchEvent}
         style={{
           position: 'absolute',
           width: '80%',
@@ -359,8 +341,8 @@ function App() {
             isPlugged
               ? {
                   display: 'block',
-                  height: '100%',
-                  width: '100%',
+                  height: '80%',
+                  width: '80%',
                   // zIndex: 30, // Explicitly set z-index
                   touchAction: 'none', // Ensure touch actions are passed to canvas
                 }
