@@ -332,6 +332,9 @@ function App() {
           justifyContent: 'center',
           alignItems: 'center',
           touchAction: 'none', // Ensure touch actions are passed to canvas
+          top: '50%', // Move the top of the container to the center
+          left: '50%', // Move the left of the container to the center
+          transform: 'translate(-50%, -50%)', // Offset by 50% of its own width and height
         }}
       >
         <canvas
