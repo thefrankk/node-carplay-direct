@@ -387,7 +387,7 @@ function App() {
         )}
       </div>
       {/* Bottom Navigation */}
-      <div
+      {/* <div
         style={{
           position: 'fixed',
           bottom: 0,
@@ -418,7 +418,7 @@ function App() {
         >
           <FiHome color="white" />;
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }
