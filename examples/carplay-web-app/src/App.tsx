@@ -265,11 +265,7 @@ function App() {
   //   )
   // }
 
-  const handleTouchEvent = (event: {
-    clientX: number
-    clientY: number
-    type: any
-  }) => {
+  const handleTouchEvent = event => {
     if (!canvasRef.current) return
 
     const canvas = canvasRef.current
