@@ -328,9 +328,9 @@ function App() {
           height: '70%', // Resize container height
           width: '70%', // Resize container width
           display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          margin: 'auto', // Automatically center horizontally and vertically
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          // margin: 'auto', // Automatically center horizontally and vertically
           touchAction: 'none', // Ensure touch actions are passed to canvas
         }}
       >
@@ -341,8 +341,8 @@ function App() {
             isPlugged
               ? {
                   display: 'block',
-                  height: '70%',
-                  width: '70%',
+                  height: '100%',
+                  width: '100%',
                   // zIndex: 30, // Explicitly set z-index
                   touchAction: 'none', // Ensure touch actions are passed to canvas
                 }
