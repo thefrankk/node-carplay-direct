@@ -360,13 +360,13 @@ function App() {
           bottom: 0,
           left: 0,
           width: '100%',
-          backgroundColor: 'rgba(37, 38, 41, 0.9)', // Slight transparency
+          backgroundColor: 'rgba(51, 52, 56, 0.9)', // Slight transparency
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
           zIndex: 32,
 
-          padding: '20px 0',
+          padding: '18px 0',
         }}
       >
         <button
@@ -383,7 +383,7 @@ function App() {
           }}
           onClick={navigateHome}
         >
-          <FiHome color="white" size={32} />;
+          <FiHome color="white" size={38} />;
         </button>
       </div>
     </div>
