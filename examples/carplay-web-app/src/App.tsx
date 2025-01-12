@@ -195,8 +195,10 @@ function App() {
     checkDevice()
   }, [carplayWorker, checkDevice])
 
-  const navigateHome = useCallback(() => {
+  const handleServerMessage = useCallback(() => {
     console.log('Navigating to Home')
+    sendMessage('Send message from home')
+
     // Add navigation logic here
   }, [])
 
@@ -480,7 +482,7 @@ function App() {
             cursor: 'pointer',
             color: '#000000', // Ensure visibility against transparent background
           }}
-          onClick={navigateHome}
+          onClick={handleServerMessage}
         >
           <FiHome color="white" size={38} />;
         </button>
