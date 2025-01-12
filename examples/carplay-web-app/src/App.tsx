@@ -197,7 +197,7 @@ function App() {
 
   const handleServerMessage = useCallback(() => {
     console.log('Navigating to Home')
-    sendMessage('Send message from home')
+    sendMessage('launch-dashboard')
 
     // Add navigation logic here
   }, [])
