@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const useSocketManager = (host: string) => {
-  const [socket, setSocket] = useState<WebSocket | null>(null)
+  const socketRef = useRef<WebSocket | null>(null) // Ref for the WebSocket instance
   const [state, setState] = useState<Record<string, any>>({}) // Holds dynamic state updates
 
   useEffect(() => {
     const ws = new WebSocket(host)
+    socketRef.current = ws // Assign the WebSocket to the ref
 
     ws.onopen = () => {
       console.log('Connected to the server')
-      setSocket(ws)
     }
 
     ws.onmessage = (event: MessageEvent) => {
@@ -27,16 +27,17 @@ export const useSocketManager = (host: string) => {
 
     ws.onclose = () => {
       console.log('Disconnected from server')
+      socketRef.current = null // Clean up the ref
     }
 
     return () => {
-      ws.close()
+      ws.close() // Ensure the WebSocket is closed on cleanup
     }
   }, [host])
 
   const sendMessage = (message: string) => {
-    if (socket && socket.readyState === WebSocket.OPEN) {
-      socket.send(message)
+    if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+      socketRef.current.send(message)
     } else {
       console.error('WebSocket is not connected')
     }
@@ -49,7 +50,7 @@ export const useSocketManager = (host: string) => {
     }))
   }
 
-  return { sendMessage, state, socket }
+  return { sendMessage, state, socket: socketRef.current }
 }
 
 const handleServerData = (
