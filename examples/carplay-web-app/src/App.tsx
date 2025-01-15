@@ -221,7 +221,7 @@ function App() {
         touchAction: 'none',
         // backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
         backgroundImage:
-          'radial-gradient(circle, #746abe, #645f9e, #55547e, #49495f, #3d3d41)',
+          'linear-gradient(to top, #000000, #271a1f, #482d3a, #6a425a, #8c597f, #8c597f, #8c597f, #8c597f, #6a425a, #482d3a, #271a1f, #000000)',
 
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -310,8 +310,7 @@ function App() {
               display: 'block',
               height: '100%',
               width: '100%',
-              backgroundColor: 'rgba(70, 69, 69, 0.9)', // Add a semi-transparent background
-              border: '2px solid #ccc', // Optional border for visibility
+              backgroundColor: 'rgba(70, 69, 69, 0)', // Add a semi-transparent background
               zIndex: 20, // Place it behind the canvas (if visible)
             }}
           />
