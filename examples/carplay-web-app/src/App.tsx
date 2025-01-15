@@ -214,67 +214,6 @@ function App() {
 
   const isLoading = !isPlugged
 
-  //   return (
-  //     <div
-  //       style={{ height: '100%', touchAction: 'none' }}
-  //       id={'main'}
-  //       className="App"
-  //     >
-  //       {isLoading && (
-  //         <div
-  //           style={{
-  //             position: 'absolute',
-  //             width: '100%',
-  //             height: '100%',
-  //             display: 'flex',
-  //             justifyContent: 'center',
-  //             alignItems: 'center',
-  //           }}
-  //         >
-  //           {deviceFound === false && (
-  //             <button onClick={onClick} rel="noopener noreferrer">
-  //               Plug-In Carplay Dongle and Press
-  //             </button>
-  //           )}
-  //           {deviceFound === true && (
-  //             <RotatingLines
-  //               strokeColor="grey"
-  //               strokeWidth="5"
-  //               animationDuration="0.75"
-  //               width="96"
-  //               visible={true}
-  //             />
-  //           )}
-  //         </div>
-  //       )}
-  //       <div
-  //         id="videoContainer"
-  //         onPointerDown={sendTouchEvent}
-  //         onPointerMove={sendTouchEvent}
-  //         onPointerUp={sendTouchEvent}
-  //         onPointerCancel={sendTouchEvent}
-  //         onPointerOut={sendTouchEvent}
-  //         style={{
-  //           height: '75%',
-  //           width: '75%',
-  //           top: '50%', // Move the container down by 50% of its parent's height
-  //           left: '50%', // Move the container right by 50% of its parent's width
-  //           transform: 'translate(-50%, -50%)', // Offset the container back by half its size
-  //           padding: 0,
-  //           margin: 0,
-  //           display: 'flex',
-  //         }}
-  //       >
-  //         <canvas
-  //           ref={canvasRef}
-  //           id="video"
-  //           style={isPlugged ? { height: '100%' } : { display: 'none' }}
-  //         />
-  //       </div>
-  //     </div>
-  //   )
-  // }
-
   return (
     <div
       style={{
@@ -293,8 +232,8 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            width: '80%',
-            height: '80%',
+            width: '100%',
+            height: '100%',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -337,14 +276,14 @@ function App() {
         style={{
           position: 'absolute',
           width: '82%',
-          height: '82%',
+          height: '100%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           touchAction: 'none', // Ensure touch actions are passed to canvas
           top: '50%', // Move the top of the container to the center
           left: '50%', // Move the left of the container to the center
-          transform: 'translate(-50%, -50%)', // Offset by 50% of its own width and height
+          transform: 'translate(-40%, -50%)', // Offset by 50% of its own width and height
         }}
       >
         <canvas
@@ -362,6 +301,18 @@ function App() {
               : { display: 'none' }
           }
         />
+        {!isPlugged && (
+          <div
+            style={{
+              display: 'block',
+              height: '100%',
+              width: '100%',
+              backgroundColor: 'rgba(70, 69, 69, 0.9)', // Add a semi-transparent background
+              border: '2px solid #ccc', // Optional border for visibility
+              zIndex: 20, // Place it behind the canvas (if visible)
+            }}
+          />
+        )}
       </div>
       {/* Left Icon */}
       <div
