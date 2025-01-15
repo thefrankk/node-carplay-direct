@@ -219,7 +219,10 @@ function App() {
       style={{
         height: '100vh', // Use vh for consistent height
         touchAction: 'none',
-        backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
+        // backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
+        backgroundImage:
+          'radial-gradient(circle, #746abe, #645f9e, #55547e, #49495f, #3d3d41)',
+
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -276,14 +279,14 @@ function App() {
         style={{
           position: 'absolute',
           width: '82%',
-          height: '100%',
+          height: '82%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           touchAction: 'none', // Ensure touch actions are passed to canvas
           top: '50%', // Move the top of the container to the center
           left: '50%', // Move the left of the container to the center
-          transform: 'translate(-40%, -50%)', // Offset by 50% of its own width and height
+          transform: 'translate(-50%, -50%)', // Offset by 50% of its own width and height
         }}
       >
         <canvas
@@ -418,7 +421,7 @@ function App() {
           alignItems: 'center',
           zIndex: 32,
 
-          padding: '20px 0',
+          padding: '18px 0',
         }}
       >
         <button
