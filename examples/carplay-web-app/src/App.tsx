@@ -386,7 +386,7 @@ function App() {
               display: 'flex',
               justifyContent: 'space-between', // Space out the items horizontally
               alignItems: 'center', // Align vertically centered
-              width: '30%', // Adjust the width to your container
+              width: '35%', // Adjust the width to your container
               marginRight: '20px', // Add space to the right
             }}
           >
@@ -397,6 +397,7 @@ function App() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                margin: '2px',
               }}
             >
               <span style={leftSectionStyle(isFOn)}>F</span>
@@ -409,6 +410,7 @@ function App() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                margin: '2px',
               }}
             >
               <span style={leftSectionStyle(isNOn)}>N</span>
@@ -421,6 +423,7 @@ function App() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                margin: '2px',
               }}
             >
               <span style={leftSectionStyle(isROn)}>R</span>
@@ -466,7 +469,6 @@ function App() {
             <span
               style={{
                 fontSize: '25px',
-                marginRight: '5px',
                 color: 'rgba(255, 255, 255, 1)',
               }}
             >
