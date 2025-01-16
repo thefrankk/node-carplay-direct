@@ -386,7 +386,7 @@ function App() {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              width: '25%', // Adjust width to fine-tune spacing
+              width: '22%', // Adjust width to fine-tune spacing
               marginLeft: '-10px', // Move slightly to the left
             }}
           >
@@ -465,7 +465,8 @@ function App() {
               display: 'flex',
               alignItems: 'center',
               textAlign: 'right',
-              marginRight: '-30px', // Move slightly to the right
+              position: 'relative', // Allows fine positioning
+              right: '50px', // Moves the section to the right without affecting others
             }}
           >
             <span
