@@ -222,10 +222,10 @@ function App() {
       <GlobalStyle />
       <div
         style={{
-          position: 'relative',
-          height: '100vh',
+          height: '105vh',
           touchAction: 'none',
-          overflow: 'hidden', // Prevent blur overflow
+          position: 'relative',
+          overflow: 'hidden',
         }}
         id="main"
         className="App"
@@ -241,8 +241,19 @@ function App() {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            filter: 'blur(12px)', // Apply blur to only this div
-            zIndex: -1, // Ensure it stays behind other content
+            filter: 'blur(50px)',
+            zIndex: -2,
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent overlay
+            zIndex: -1,
           }}
         />
         {isLoading && (
