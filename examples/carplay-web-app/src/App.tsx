@@ -222,7 +222,7 @@ function App() {
       <GlobalStyle />
       <div
         style={{
-          height: '105vh',
+          height: '100vh',
           touchAction: 'none',
           position: 'relative',
           overflow: 'hidden',
@@ -241,7 +241,7 @@ function App() {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            filter: 'blur(50px)',
+            filter: 'blur(25px)',
             zIndex: -2,
           }}
         />
