@@ -217,7 +217,7 @@ function App() {
   return (
     <div
       style={{
-        height: '105vh', // Use vh for consistent height
+        height: '100vh', // Use vh for consistent height
         //backgroundSize: '98%', // Start slightly zoomed-in
         backgroundSize: 'cover', // Start slightly zoomed-in
 
@@ -281,8 +281,8 @@ function App() {
         onPointerOut={sendTouchEvent}
         style={{
           position: 'absolute',
-          width: '75%', //82
-          height: '75%', //82
+          width: '72%', //82
+          height: '72%', //82
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
