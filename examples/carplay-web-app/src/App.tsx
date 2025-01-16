@@ -348,8 +348,8 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            left: '10px',
-            top: '55%',
+            left: '-10px',
+            top: '48%',
             transform: 'translateY(-50%)',
             display: 'flex',
             flexDirection: 'column', // Vertical layout
@@ -407,8 +407,8 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            right: '10px',
-            top: '50%',
+            right: '-10px',
+            top: '43%',
             transform: 'translateY(-50%)',
             cursor: 'pointer', // Pointer cursor for interactivity
             display: 'flex',
@@ -578,7 +578,7 @@ function App() {
         <div
           style={{
             position: 'fixed',
-            bottom: -4,
+            bottom: 0,
             left: 0,
             width: '100%',
             backgroundColor: 'rgba(66, 68, 73, 0.9)', // 0.9 Slight transparency
