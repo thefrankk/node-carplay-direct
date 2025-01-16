@@ -377,7 +377,7 @@ function App() {
             display: 'flex',
             justifyContent: 'space-between', // Space out sections
             alignItems: 'center',
-            width: '40%', // Adjust width to control spacing
+            width: '35%', // Adjust width to control spacing
           }}
         >
           {/* Left Section: FNR */}
@@ -466,7 +466,7 @@ function App() {
               alignItems: 'center',
               textAlign: 'right',
               position: 'relative', // Allows fine positioning
-              right: '0px', // Moves the section to the right without affecting others
+              right: '-5px', // Moves the section to the right without affecting others
             }}
           >
             <span
