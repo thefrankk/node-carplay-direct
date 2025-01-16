@@ -222,38 +222,28 @@ function App() {
       <GlobalStyle />
       <div
         style={{
-          height: '100vh',
-          touchAction: 'none',
           position: 'relative',
-          overflow: 'hidden',
+          height: '100vh',
+          width: '100%',
+          overflow: 'hidden', // Prevent blur overflow
         }}
         id="main"
         className="App"
       >
+        {/* Blurred Background */}
         <div
           style={{
             position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
+            top: '-10%',
+            left: '-10%',
+            width: '120%',
+            height: '120%',
             backgroundImage: 'url("/esfera_resized.png")',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            filter: 'blur(16px)',
-            zIndex: -2,
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent overlay
-            zIndex: -1,
+            filter: 'blur(25px)', // Apply blur here
+            zIndex: -1, // Ensure this stays behind the content
           }}
         />
         {isLoading && (
