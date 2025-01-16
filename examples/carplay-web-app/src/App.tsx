@@ -50,6 +50,9 @@ function App() {
     null,
   )
 
+  //Icons
+  const [isOn, setIsOn] = useState(true) // State to manage on/off status
+
   const { sendMessage, state } = useSocketManager('ws://localhost:8080')
 
   useEffect(() => {
@@ -341,33 +344,103 @@ function App() {
           )}
         </div>
         {/* Left Icon */}
+
         <div
           style={{
             position: 'absolute',
-            left: '20px', // Position 10px from the left edge
-            top: '50%', // Center vertically
+            left: '10px',
+            top: '58%',
             transform: 'translateY(-50%)',
-            fontSize: '24px',
-            color: '#000', // Change to your desired color
+            display: 'flex',
+            flexDirection: 'column', // Vertical layout
+            alignItems: 'center',
+            gap: '20px', // Space between the images
           }}
         >
-          <FiHome color="rgb(100, 100, 100)" size={38} />
+          {/* First Icon */}
+          <div>
+            <img
+              src="/assets/izq_on_Dark.png"
+              alt="Icon 1"
+              style={{
+                color: 'green',
+                width: '100px', // Adjust size as needed
+                height: '100px',
+                opacity: 1, // Full opacity for "on" state
+                filter: 'none', // No grayscale for "on" state
+                transition: 'all 0.3s ease', // Smooth transition for visual effects
+              }}
+            />
+          </div>
+
+          {/* Second Icon */}
+          <div>
+            <img
+              src="/assets/Luces_Dark.png"
+              alt="Icon 2"
+              style={{
+                width: '32px', // Smaller size for "off" state
+                height: '20px',
+                opacity: 0.5, // Reduced opacity for "off" state
+                filter: 'grayscale(100%)', // Grayscale for "off" state
+                transition: 'all 0.3s ease',
+              }}
+            />
+          </div>
+
+          {/* Third Icon */}
+          <div>
+            <img
+              src="/assets/low_lights_dark.png"
+              alt="Icon 3"
+              style={{
+                width: '32px', // Adjust size as needed
+                height: '20px',
+                opacity: 1, // Full opacity for "on" state
+                filter: 'none', // No grayscale for "on" state
+                transition: 'all 0.3s ease',
+              }}
+            />
+          </div>
         </div>
         {/* Right Icon */}
         <div
           style={{
             position: 'absolute',
-            right: '10px', // Position 10px from the right edge
-            top: '50%', // Center vertically
+            right: '10px',
+            top: '53%',
             transform: 'translateY(-50%)',
+            cursor: 'pointer', // Pointer cursor for interactivity
+            display: 'flex',
+            flexDirection: 'column', // Vertical layout for images
+            alignItems: 'center',
+            gap: '20px', // Space between images
           }}
+          onClick={() => setIsOn(!isOn)} // Toggle the state on click
         >
+          {/* First Image */}
           <img
-            src="/assets/Dcha_Dark.png" // Path to your PNG file
-            alt="Home Icon" // Optional: Alternative text for accessibility
+            src="/assets/Dcha_Dark.png" // Path to the first PNG image
+            alt="Right directional"
             style={{
-              width: '100px', // Adjust width to match your requirements
-              height: '100px', // Adjust height to match your requirements
+              width: isOn ? '108px' : '70px', // Larger size when on, smaller when off
+              height: isOn ? '100px' : '70px',
+              opacity: isOn ? 1 : 0.2, // Full opacity when on, reduced when off
+              filter: isOn ? 'none' : 'grayscale(100%)', // Grayscale effect when off
+              transition: 'all 0.3s ease', // Smooth transition for changes
+            }}
+          />
+
+          {/* Second Image */}
+          <img
+            src="/assets/parking_dark.png" // Path to the second PNG image
+            alt="Second Icon"
+            style={{
+              width: isOn ? '35px' : '25px', // Adjust size based on state
+              height: isOn ? '25px' : '25px',
+              opacity: isOn ? 1 : 0.5, // Reduced opacity for "off" state
+              filter: isOn ? 'none' : 'grayscale(100%)', // Grayscale effect for "off" state
+              transition: 'all 0.3s ease',
             }}
           />
         </div>
