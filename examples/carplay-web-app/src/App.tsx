@@ -386,7 +386,7 @@ function App() {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              width: '25%', // Adjust width to fine-tune spacing
+              width: '20%', // Adjust width to fine-tune spacing
               marginLeft: '-10px', // Move slightly to the left
             }}
           >
@@ -442,7 +442,7 @@ function App() {
           >
             <span
               style={{
-                fontSize: '55px',
+                fontSize: '58px',
                 color: 'rgba(255, 255, 255, 1)',
               }}
             >
@@ -465,7 +465,7 @@ function App() {
               display: 'flex',
               alignItems: 'center',
               textAlign: 'right',
-              marginRight: '-60px', // Move slightly to the right
+              marginRight: '-80px', // Move slightly to the right
             }}
           >
             <span
