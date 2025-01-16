@@ -349,7 +349,7 @@ function App() {
           style={{
             position: 'absolute',
             left: '10px',
-            top: '58%',
+            top: '55%',
             transform: 'translateY(-50%)',
             display: 'flex',
             flexDirection: 'column', // Vertical layout
@@ -364,8 +364,8 @@ function App() {
               alt="Icon 1"
               style={{
                 color: 'green',
-                width: '100px', // Adjust size as needed
-                height: '100px',
+                width: '160px', // Adjust size as needed
+                height: '150px',
                 opacity: 1, // Full opacity for "on" state
                 filter: 'none', // No grayscale for "on" state
                 transition: 'all 0.3s ease', // Smooth transition for visual effects
@@ -408,7 +408,7 @@ function App() {
           style={{
             position: 'absolute',
             right: '10px',
-            top: '53%',
+            top: '50%',
             transform: 'translateY(-50%)',
             cursor: 'pointer', // Pointer cursor for interactivity
             display: 'flex',
@@ -423,8 +423,8 @@ function App() {
             src="/assets/Dcha_Dark.png" // Path to the first PNG image
             alt="Right directional"
             style={{
-              width: isOn ? '108px' : '70px', // Larger size when on, smaller when off
-              height: isOn ? '100px' : '70px',
+              width: isOn ? '160px' : '70px', // Larger size when on, smaller when off
+              height: isOn ? '150px' : '70px',
               opacity: isOn ? 1 : 0.2, // Full opacity when on, reduced when off
               filter: isOn ? 'none' : 'grayscale(100%)', // Grayscale effect when off
               transition: 'all 0.3s ease', // Smooth transition for changes
@@ -578,10 +578,10 @@ function App() {
         <div
           style={{
             position: 'fixed',
-            bottom: 0,
+            bottom: -4,
             left: 0,
             width: '100%',
-            backgroundColor: 'rgba(66, 68, 73, 0)', // 0.9 Slight transparency
+            backgroundColor: 'rgba(66, 68, 73, 0.9)', // 0.9 Slight transparency
             display: 'flex',
             justifyContent: 'space-around',
             alignItems: 'center',
@@ -604,7 +604,7 @@ function App() {
             }}
             onClick={handleServerMessage}
           >
-            <FiHome color="white" size={50} />;
+            <FiHome color="white" size={50} />
           </button>
         </div>
       </div>
