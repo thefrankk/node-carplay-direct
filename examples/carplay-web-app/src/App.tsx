@@ -217,6 +217,15 @@ function App() {
 
   const isLoading = !isPlugged
 
+  const leftSectionStyle = isOn => ({
+    fontSize: isOn ? '40px' : '25px', // 30px if turned on, 20px if turned off
+    color: isOn ? 'white' : 'gray', // White if turned on, gray if turned off
+  })
+
+  const isFOn = true // Example variable to control "F"
+  const isNOn = false // Example variable to control "N"
+  const isROn = false // Example variable to control "R"
+
   return (
     <>
       <GlobalStyle />
@@ -368,7 +377,7 @@ function App() {
             display: 'flex',
             justifyContent: 'space-between', // Distribute left and right sections
             alignItems: 'center',
-            width: '25%', // Reduce width to bring sections closer
+            width: '50%', // Reduce width to bring sections closer
           }}
         >
           {/* Left Section: 120 and MPH */}
@@ -377,10 +386,11 @@ function App() {
               display: 'flex',
               justifyContent: 'space-between', // Space out the items horizontally
               alignItems: 'center', // Align vertically centered
-              width: '20%', // Adjust the width to your container
+              width: '30%', // Adjust the width to your container
+              marginRight: '20px', // Add space to the right
             }}
           >
-            {/* Left "120" */}
+            {/* Left "F" */}
             <div
               style={{
                 textAlign: 'center',
@@ -389,17 +399,10 @@ function App() {
                 alignItems: 'center',
               }}
             >
-              <span
-                style={{
-                  fontSize: '20px',
-                  color: 'rgb(104, 104, 104)',
-                }}
-              >
-                F
-              </span>
+              <span style={leftSectionStyle(isFOn)}>F</span>
             </div>
 
-            {/* Center "120" */}
+            {/* Center "N" */}
             <div
               style={{
                 textAlign: 'center',
@@ -408,17 +411,10 @@ function App() {
                 alignItems: 'center',
               }}
             >
-              <span
-                style={{
-                  fontSize: '30px',
-                  color: 'rgba(255, 255, 255, 1)',
-                }}
-              >
-                N
-              </span>
+              <span style={leftSectionStyle(isNOn)}>N</span>
             </div>
 
-            {/* Right "120" */}
+            {/* Right "R" */}
             <div
               style={{
                 textAlign: 'center',
@@ -427,14 +423,7 @@ function App() {
                 alignItems: 'center',
               }}
             >
-              <span
-                style={{
-                  fontSize: '20px',
-                  color: 'rgb(114, 114, 114)',
-                }}
-              >
-                R
-              </span>
+              <span style={leftSectionStyle(isROn)}>R</span>
             </div>
           </div>
 
@@ -476,7 +465,7 @@ function App() {
           >
             <span
               style={{
-                fontSize: '20px',
+                fontSize: '30px',
                 marginRight: '5px',
                 color: 'rgba(255, 255, 255, 1)',
               }}
@@ -485,7 +474,7 @@ function App() {
             </span>
             <BatteryGauge
               value={55}
-              size={50}
+              size={60}
               animated={true}
               customization={{
                 readingText: {
