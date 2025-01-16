@@ -242,7 +242,7 @@ function App() {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            filter: 'blur(25px)', // Apply blur here
+            filter: 'blur(35px)', // Apply blur here
             zIndex: -1, // Ensure this stays behind the content
           }}
         />
@@ -374,6 +374,73 @@ function App() {
           {/* Left Section: 120 and MPH */}
           <div
             style={{
+              display: 'flex',
+              justifyContent: 'space-between', // Space out the items horizontally
+              alignItems: 'center', // Align vertically centered
+              width: '20%', // Adjust the width to your container
+            }}
+          >
+            {/* Left "120" */}
+            <div
+              style={{
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '20px',
+                  color: 'rgb(104, 104, 104)',
+                }}
+              >
+                F
+              </span>
+            </div>
+
+            {/* Center "120" */}
+            <div
+              style={{
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '30px',
+                  color: 'rgba(255, 255, 255, 1)',
+                }}
+              >
+                N
+              </span>
+            </div>
+
+            {/* Right "120" */}
+            <div
+              style={{
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '20px',
+                  color: 'rgb(114, 114, 114)',
+                }}
+              >
+                R
+              </span>
+            </div>
+          </div>
+
+          {/* Left Section: 120 and MPH */}
+          <div
+            style={{
               textAlign: 'center',
               display: 'flex',
               flexDirection: 'column', // Stack "120" and "MPH"
@@ -382,7 +449,7 @@ function App() {
           >
             <span
               style={{
-                fontSize: '30px',
+                fontSize: '50px',
                 color: 'rgba(255, 255, 255, 1)',
               }}
             >
@@ -390,7 +457,7 @@ function App() {
             </span>
             <span
               style={{
-                fontSize: '15px',
+                fontSize: '20px',
                 fontWeight: 'normal',
                 color: 'rgba(255, 255, 255, 1)',
               }}
@@ -410,7 +477,6 @@ function App() {
             <span
               style={{
                 fontSize: '20px',
-                fontWeight: 'bold',
                 marginRight: '5px',
                 color: 'rgba(255, 255, 255, 1)',
               }}
@@ -418,7 +484,7 @@ function App() {
               55%
             </span>
             <BatteryGauge
-              value={40}
+              value={55}
               size={50}
               animated={true}
               customization={{
