@@ -25,8 +25,8 @@ import { GaugeComponent } from 'react-gauge-component'
 import GlobalStyle from './utils/GlobalStyle'
 import BatteryGauge from 'react-battery-gauge'
 
-const width = window.innerWidth * 0.82
-const height = window.innerHeight * 0.82
+const width = window.innerWidth * 0.74
+const height = window.innerHeight * 0.74
 
 const videoChannel = new MessageChannel()
 const micChannel = new MessageChannel()
@@ -360,11 +360,16 @@ function App() {
             right: '10px', // Position 10px from the right edge
             top: '50%', // Center vertically
             transform: 'translateY(-50%)',
-            fontSize: '24px',
-            color: '#000', // Change to your desired color
           }}
         >
-          <FiHome color="white" size={38} />
+          <img
+            src="/assets/Dcha_Dark.png" // Path to your PNG file
+            alt="Home Icon" // Optional: Alternative text for accessibility
+            style={{
+              width: '100px', // Adjust width to match your requirements
+              height: '100px', // Adjust height to match your requirements
+            }}
+          />
         </div>
 
         {/* Top Container */}
