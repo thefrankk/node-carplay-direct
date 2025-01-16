@@ -223,9 +223,9 @@ function App() {
 
         touchAction: 'none',
         //backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
-        //backgroundImage: 'url("/esfera_resized.png")', // Reference public folder
-        backgroundImage:
-          'linear-gradient(to top, #000000, #271a1f, #482d3a, #6a425a, #8c597f, #8c597f, #8c597f, #8c597f, #6a425a, #482d3a, #271a1f, #000000)',
+        backgroundImage: 'url("/esfera_resized.png")', // Reference public folder
+        //backgroundImage:
+        //  'linear-gradient(to top, #000000, #271a1f, #482d3a, #6a425a, #8c597f, #8c597f, #8c597f, #8c597f, #6a425a, #482d3a, #271a1f, #000000)',
 
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
