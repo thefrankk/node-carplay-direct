@@ -367,30 +367,30 @@ function App() {
           <FiHome color="white" size={38} />
         </div>
 
-        {/* Top Text and Icons */}
+        {/* Top Container */}
         <div
           style={{
             position: 'absolute',
-            top: '10px', // Position near the top of the screen
+            top: '10px',
             left: '50%',
-            transform: 'translateX(-50%)', // Center horizontally
+            transform: 'translateX(-50%)',
             display: 'flex',
-            justifyContent: 'space-between', // Distribute left and right sections
+            justifyContent: 'space-between', // Space out sections
             alignItems: 'center',
-            width: '30%', // Reduce width to bring sections closer
+            width: '60%', // Adjust width to control spacing
           }}
         >
-          {/* Left Section: 120 and MPH */}
+          {/* Left Section: FNR */}
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between', // Space out the items horizontally
-              alignItems: 'center', // Align vertically centered
-              width: '35%', // Adjust the width to your container
-              marginRight: '20px', // Add space to the right
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              width: '35%', // Adjust width to fine-tune spacing
+              marginLeft: '-10px', // Move slightly to the left
             }}
           >
-            {/* Left "F" */}
+            {/* F */}
             <div
               style={{
                 textAlign: 'center',
@@ -403,7 +403,7 @@ function App() {
               <span style={leftSectionStyle(isFOn)}>F</span>
             </div>
 
-            {/* Center "N" */}
+            {/* N */}
             <div
               style={{
                 textAlign: 'center',
@@ -416,7 +416,7 @@ function App() {
               <span style={leftSectionStyle(isNOn)}>N</span>
             </div>
 
-            {/* Right "R" */}
+            {/* R */}
             <div
               style={{
                 textAlign: 'center',
@@ -430,13 +430,14 @@ function App() {
             </div>
           </div>
 
-          {/* Left Section: 120 and MPH */}
+          {/* Center Section: 120 MPH */}
           <div
             style={{
               textAlign: 'center',
               display: 'flex',
               flexDirection: 'column', // Stack "120" and "MPH"
               alignItems: 'center',
+              marginLeft: '-20px', // Move slightly to the left
             }}
           >
             <span
@@ -458,18 +459,20 @@ function App() {
             </span>
           </div>
 
-          {/* Right Section: Fuel Text and Icon */}
+          {/* Right Section: 55% + Battery */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               textAlign: 'right',
+              marginRight: '-20px', // Move slightly to the right
             }}
           >
             <span
               style={{
                 fontSize: '25px',
                 color: 'rgba(255, 255, 255, 1)',
+                marginRight: '5px', // Add space between text and icon
               }}
             >
               55%
@@ -522,7 +525,7 @@ function App() {
             }}
             onClick={handleServerMessage}
           >
-            <FiHome color="white" size={38} />;
+            <FiHome color="white" size={50} />;
           </button>
         </div>
       </div>
