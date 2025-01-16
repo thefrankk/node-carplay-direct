@@ -219,9 +219,10 @@ function App() {
       style={{
         height: '100vh', // Use vh for consistent height
         touchAction: 'none',
-        // backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
-        backgroundImage:
-          'linear-gradient(to top, #000000, #271a1f, #482d3a, #6a425a, #8c597f, #8c597f, #8c597f, #8c597f, #6a425a, #482d3a, #271a1f, #000000)',
+        //backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
+        backgroundImage: 'url("/esfera_resized.png")', // Reference public folder
+        // backgroundImage:
+        // 'linear-gradient(to top, #000000, #271a1f, #482d3a, #6a425a, #8c597f, #8c597f, #8c597f, #8c597f, #6a425a, #482d3a, #271a1f, #000000)',
 
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -414,7 +415,7 @@ function App() {
           bottom: 0,
           left: 0,
           width: '100%',
-          backgroundColor: 'rgba(66, 68, 73, 0.9)', // Slight transparency
+          backgroundColor: 'rgba(66, 68, 73, 0)', // 0.9 Slight transparency
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
