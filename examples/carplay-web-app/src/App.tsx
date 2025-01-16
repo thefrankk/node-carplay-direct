@@ -348,8 +348,8 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            left: '-10px',
-            top: '48%',
+            left: '-15px',
+            top: '50%',
             transform: 'translateY(-50%)',
             display: 'flex',
             flexDirection: 'column', // Vertical layout
@@ -407,8 +407,8 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            right: '-10px',
-            top: '43%',
+            right: '-15px',
+            top: '46%',
             transform: 'translateY(-50%)',
             cursor: 'pointer', // Pointer cursor for interactivity
             display: 'flex',
