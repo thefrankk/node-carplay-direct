@@ -437,7 +437,7 @@ function App() {
               display: 'flex',
               flexDirection: 'column', // Stack "120" and "MPH"
               alignItems: 'center',
-              marginLeft: '15px', // Move slightly to the left
+              marginLeft: '25px', // Move slightly to the left
             }}
           >
             <span
