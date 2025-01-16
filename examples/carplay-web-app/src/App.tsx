@@ -377,7 +377,7 @@ function App() {
             display: 'flex',
             justifyContent: 'space-between', // Space out sections
             alignItems: 'center',
-            width: '60%', // Adjust width to control spacing
+            width: '40%', // Adjust width to control spacing
           }}
         >
           {/* Left Section: FNR */}
@@ -437,7 +437,7 @@ function App() {
               display: 'flex',
               flexDirection: 'column', // Stack "120" and "MPH"
               alignItems: 'center',
-              marginLeft: '-20px', // Move slightly to the left
+              marginLeft: '-45px', // Move slightly to the left
             }}
           >
             <span
@@ -465,7 +465,7 @@ function App() {
               display: 'flex',
               alignItems: 'center',
               textAlign: 'right',
-              marginRight: '-20px', // Move slightly to the right
+              marginRight: '-40px', // Move slightly to the right
             }}
           >
             <span
