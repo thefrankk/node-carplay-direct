@@ -466,7 +466,7 @@ function App() {
               alignItems: 'center',
               textAlign: 'right',
               position: 'relative', // Allows fine positioning
-              right: '-5px', // Moves the section to the right without affecting others
+              right: '-25px', // Moves the section to the right without affecting others
             }}
           >
             <span
