@@ -218,7 +218,8 @@ function App() {
     <div
       style={{
         height: '105vh', // Use vh for consistent height
-        //backgroundSize: '102%', // Start slightly zoomed-in
+        //backgroundSize: '98%', // Start slightly zoomed-in
+        backgroundSize: 'cover', // Start slightly zoomed-in
 
         touchAction: 'none',
         //backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
@@ -329,7 +330,7 @@ function App() {
           color: '#000', // Change to your desired color
         }}
       >
-        <FiHome color="rgba(80, 80, 80, 0.49)" size={38} />
+        <FiHome color="rgb(100, 100, 100)" size={38} />
       </div>
       {/* Right Icon */}
       <div
@@ -342,7 +343,7 @@ function App() {
           color: '#000', // Change to your desired color
         }}
       >
-        <FiHome color="rgba(80, 80, 80, 0.49)" size={38} />
+        <FiHome color="white" size={38} />
       </div>
 
       {/* Top Text and Icons */}
