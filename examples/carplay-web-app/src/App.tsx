@@ -218,7 +218,7 @@ function App() {
   const isLoading = !isPlugged
 
   const leftSectionStyle = isOn => ({
-    fontSize: isOn ? '40px' : '25px', // 30px if turned on, 20px if turned off
+    fontSize: isOn ? '32px' : '22px', // 30px if turned on, 20px if turned off
     color: isOn ? 'white' : 'gray', // White if turned on, gray if turned off
   })
 
@@ -377,7 +377,7 @@ function App() {
             display: 'flex',
             justifyContent: 'space-between', // Distribute left and right sections
             alignItems: 'center',
-            width: '50%', // Reduce width to bring sections closer
+            width: '30%', // Reduce width to bring sections closer
           }}
         >
           {/* Left Section: 120 and MPH */}
@@ -465,7 +465,7 @@ function App() {
           >
             <span
               style={{
-                fontSize: '30px',
+                fontSize: '25px',
                 marginRight: '5px',
                 color: 'rgba(255, 255, 255, 1)',
               }}
@@ -474,7 +474,7 @@ function App() {
             </span>
             <BatteryGauge
               value={55}
-              size={60}
+              size={50}
               animated={true}
               customization={{
                 readingText: {
