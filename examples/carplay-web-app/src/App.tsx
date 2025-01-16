@@ -437,7 +437,7 @@ function App() {
               display: 'flex',
               flexDirection: 'column', // Stack "120" and "MPH"
               alignItems: 'center',
-              marginLeft: '-45px', // Move slightly to the left
+              marginLeft: '-30px', // Move slightly to the left
             }}
           >
             <span
@@ -466,7 +466,7 @@ function App() {
               alignItems: 'center',
               textAlign: 'right',
               position: 'relative', // Allows fine positioning
-              right: '10px', // Moves the section to the right without affecting others
+              right: '0px', // Moves the section to the right without affecting others
             }}
           >
             <span
