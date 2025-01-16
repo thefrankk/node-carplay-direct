@@ -17,7 +17,9 @@
     "pcm-ringbuf-player": "0.0.6",
     "process": "^0.11.10",
     "react": "^18.2.0",
+    "react-battery-gauge": "^1.0.7",
     "react-dom": "^18.2.0",
+    "react-gauge-component": "^1.2.62",
     "react-icons": "^5.4.0",
     "react-loader-spinner": "^5.3.4",
     "react-scripts": "5.0.1",
@@ -28,6 +30,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/jmuxer": "^2.0.3",
+    "@types/styled-components": "^5.1.34",
     "react-app-rewired": "^2.2.1"
   },
   "scripts": {

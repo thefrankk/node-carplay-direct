@@ -21,6 +21,9 @@ import { InitEvent } from './worker/render/RenderEvents'
 import debug from 'debug'
 import { FiArrowLeft, FiBattery, FiHome } from 'react-icons/fi' // Feather Home Icon
 import { useSocketManager } from './SocketManager'
+import { GaugeComponent } from 'react-gauge-component'
+import GlobalStyle from './utils/GlobalStyle'
+import BatteryGauge from 'react-battery-gauge'
 
 const width = window.innerWidth * 0.82
 const height = window.innerHeight * 0.82
@@ -215,235 +218,257 @@ function App() {
   const isLoading = !isPlugged
 
   return (
-    <div
-      style={{
-        height: '100vh', // Use vh for consistent height
-        //backgroundSize: '98%', // Start slightly zoomed-in
-        backgroundSize: 'cover', // Start slightly zoomed-in
-
-        touchAction: 'none',
-        //backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
-        backgroundImage: 'url("/esfera_resized.png")', // Reference public folder
-        //backgroundImage:
-        //  'linear-gradient(to top, #000000, #271a1f, #482d3a, #6a425a, #8c597f, #8c597f, #8c597f, #8c597f, #6a425a, #482d3a, #271a1f, #000000)',
-
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        position: 'relative', // Ensure elements inside are positioned relative to this container
-      }}
-      id="main"
-      className="App"
-    >
-      {isLoading && (
+    <>
+      <GlobalStyle />
+      <div
+        style={{
+          position: 'relative',
+          height: '100vh',
+          touchAction: 'none',
+          overflow: 'hidden', // Prevent blur overflow
+        }}
+        id="main"
+        className="App"
+      >
         <div
           style={{
             position: 'absolute',
+            top: 0,
+            left: 0,
             width: '100%',
             height: '100%',
+            backgroundImage: 'url("/esfera_resized.png")',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            filter: 'blur(12px)', // Apply blur to only this div
+            zIndex: -1, // Ensure it stays behind other content
+          }}
+        />
+        {isLoading && (
+          <div
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            {deviceFound === false && (
+              <button
+                onClick={onClick}
+                rel="noopener noreferrer"
+                style={{
+                  padding: '10px 20px',
+                  backgroundColor: '#ffffff',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  zIndex: 32, // Explicitly set z-index
+                }}
+              >
+                Plug-In Carplay Dongle and Press
+              </button>
+            )}
+            {deviceFound === true && (
+              <RotatingLines
+                strokeColor="grey"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="96"
+                visible={true}
+              />
+            )}
+          </div>
+        )}
+        <div
+          id="videoContainer"
+          onPointerDown={sendTouchEvent}
+          onPointerMove={sendTouchEvent}
+          onPointerUp={sendTouchEvent}
+          onPointerCancel={sendTouchEvent}
+          onPointerOut={sendTouchEvent}
+          style={{
+            position: 'absolute',
+            width: '74%', //82
+            height: '74%', //82
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            touchAction: 'none', // Ensure touch actions are passed to canvas
+            top: '50%', // Move the top of the container to the center
+            left: '50%', // Move the left of the container to the center
+            transform: 'translate(-50%, -50%)', // Offset by 50% of its own width and height
           }}
         >
-          {deviceFound === false && (
-            <button
-              onClick={onClick}
-              rel="noopener noreferrer"
+          <canvas
+            ref={canvasRef}
+            id="video"
+            style={
+              isPlugged
+                ? {
+                    display: 'block',
+                    height: '100%',
+                    width: '100%',
+                    // zIndex: 30, // Explicitly set z-index
+                    touchAction: 'none', // Ensure touch actions are passed to canvas
+                  }
+                : { display: 'none' }
+            }
+          />
+          {!isPlugged && (
+            <div
               style={{
-                padding: '10px 20px',
-                backgroundColor: '#ffffff',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                zIndex: 32, // Explicitly set z-index
+                display: 'block',
+                height: '100%',
+                width: '100%',
+                backgroundColor: 'rgba(70, 69, 69, 0)', // Add a semi-transparent background
+                zIndex: 20, // Place it behind the canvas (if visible)
               }}
-            >
-              Plug-In Carplay Dongle and Press
-            </button>
-          )}
-          {deviceFound === true && (
-            <RotatingLines
-              strokeColor="grey"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="96"
-              visible={true}
             />
           )}
         </div>
-      )}
-      <div
-        id="videoContainer"
-        onPointerDown={sendTouchEvent}
-        onPointerMove={sendTouchEvent}
-        onPointerUp={sendTouchEvent}
-        onPointerCancel={sendTouchEvent}
-        onPointerOut={sendTouchEvent}
-        style={{
-          position: 'absolute',
-          width: '74%', //82
-          height: '74%', //82
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          touchAction: 'none', // Ensure touch actions are passed to canvas
-          top: '50%', // Move the top of the container to the center
-          left: '50%', // Move the left of the container to the center
-          transform: 'translate(-50%, -50%)', // Offset by 50% of its own width and height
-        }}
-      >
-        <canvas
-          ref={canvasRef}
-          id="video"
-          style={
-            isPlugged
-              ? {
-                  display: 'block',
-                  height: '100%',
-                  width: '100%',
-                  // zIndex: 30, // Explicitly set z-index
-                  touchAction: 'none', // Ensure touch actions are passed to canvas
-                }
-              : { display: 'none' }
-          }
-        />
-        {!isPlugged && (
+        {/* Left Icon */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '20px', // Position 10px from the left edge
+            top: '50%', // Center vertically
+            transform: 'translateY(-50%)',
+            fontSize: '24px',
+            color: '#000', // Change to your desired color
+          }}
+        >
+          <FiHome color="rgb(100, 100, 100)" size={38} />
+        </div>
+        {/* Right Icon */}
+        <div
+          style={{
+            position: 'absolute',
+            right: '10px', // Position 10px from the right edge
+            top: '50%', // Center vertically
+            transform: 'translateY(-50%)',
+            fontSize: '24px',
+            color: '#000', // Change to your desired color
+          }}
+        >
+          <FiHome color="white" size={38} />
+        </div>
+
+        {/* Top Text and Icons */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '10px', // Position near the top of the screen
+            left: '50%',
+            transform: 'translateX(-50%)', // Center horizontally
+            display: 'flex',
+            justifyContent: 'space-between', // Distribute left and right sections
+            alignItems: 'center',
+            width: '25%', // Reduce width to bring sections closer
+          }}
+        >
+          {/* Left Section: 120 and MPH */}
           <div
             style={{
-              display: 'block',
-              height: '100%',
-              width: '100%',
-              backgroundColor: 'rgba(70, 69, 69, 0)', // Add a semi-transparent background
-              zIndex: 20, // Place it behind the canvas (if visible)
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column', // Stack "120" and "MPH"
+              alignItems: 'center',
             }}
-          />
-        )}
-      </div>
-      {/* Left Icon */}
-      <div
-        style={{
-          position: 'absolute',
-          left: '20px', // Position 10px from the left edge
-          top: '50%', // Center vertically
-          transform: 'translateY(-50%)',
-          fontSize: '24px',
-          color: '#000', // Change to your desired color
-        }}
-      >
-        <FiHome color="rgb(100, 100, 100)" size={38} />
-      </div>
-      {/* Right Icon */}
-      <div
-        style={{
-          position: 'absolute',
-          right: '10px', // Position 10px from the right edge
-          top: '50%', // Center vertically
-          transform: 'translateY(-50%)',
-          fontSize: '24px',
-          color: '#000', // Change to your desired color
-        }}
-      >
-        <FiHome color="white" size={38} />
-      </div>
+          >
+            <span
+              style={{
+                fontSize: '30px',
+                color: 'rgba(255, 255, 255, 1)',
+              }}
+            >
+              120
+            </span>
+            <span
+              style={{
+                fontSize: '15px',
+                fontWeight: 'normal',
+                color: 'rgba(255, 255, 255, 1)',
+              }}
+            >
+              MPH
+            </span>
+          </div>
 
-      {/* Top Text and Icons */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '10px', // Position near the top of the screen
-          left: '50%',
-          transform: 'translateX(-50%)', // Center horizontally
-          display: 'flex',
-          justifyContent: 'space-between', // Distribute left and right sections
-          alignItems: 'center',
-          width: '25%', // Reduce width to bring sections closer
-        }}
-      >
-        {/* Left Section: 120 and MPH */}
-        <div
-          style={{
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column', // Stack "120" and "MPH"
-            alignItems: 'center',
-          }}
-        >
-          <span
+          {/* Right Section: Fuel Text and Icon */}
+          <div
             style={{
-              fontSize: '30px',
-              fontWeight: 'bold',
-              color: 'rgba(255, 255, 255, 1)',
+              display: 'flex',
+              alignItems: 'center',
+              textAlign: 'right',
             }}
           >
-            120
-          </span>
-          <span
-            style={{
-              fontSize: '15px',
-              fontWeight: 'normal',
-              color: 'rgba(255, 255, 255, 1)',
-            }}
-          >
-            MPH
-          </span>
+            <span
+              style={{
+                fontSize: '20px',
+                fontWeight: 'bold',
+                marginRight: '5px',
+                color: 'rgba(255, 255, 255, 1)',
+              }}
+            >
+              55%
+            </span>
+            <BatteryGauge
+              value={40}
+              size={50}
+              animated={true}
+              customization={{
+                readingText: {
+                  lightContrastColor: '#111',
+                  darkContrastColor: '#fff',
+                  lowBatteryColor: 'red',
+                  fontFamily: 'Helvetica',
+                  fontSize: 0,
+                  showPercentage: true,
+                },
+              }}
+            />
+          </div>
         </div>
 
-        {/* Right Section: Fuel Text and Icon */}
+        {/* Bottom Navigation */}
         <div
           style={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            backgroundColor: 'rgba(66, 68, 73, 0)', // 0.9 Slight transparency
             display: 'flex',
+            justifyContent: 'space-around',
             alignItems: 'center',
-            textAlign: 'right',
+            zIndex: 32,
+
+            padding: '18px 0',
           }}
         >
-          <span
+          <button
             style={{
-              fontSize: '20px',
-              fontWeight: 'bold',
-              marginRight: '5px',
-              color: 'rgba(255, 255, 255, 1)',
+              backgroundColor: 'transparent',
+              border: 'none',
+              fontSize: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 35,
+              cursor: 'pointer',
+              color: '#000000', // Ensure visibility against transparent background
             }}
+            onClick={handleServerMessage}
           >
-            55%
-          </span>
-          <FiBattery color="green" size={36} />
+            <FiHome color="white" size={38} />;
+          </button>
         </div>
       </div>
-
-      {/* Bottom Navigation */}
-      <div
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          backgroundColor: 'rgba(66, 68, 73, 0)', // 0.9 Slight transparency
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          zIndex: 32,
-
-          padding: '18px 0',
-        }}
-      >
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            border: 'none',
-            fontSize: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 35,
-            cursor: 'pointer',
-            color: '#000000', // Ensure visibility against transparent background
-          }}
-          onClick={handleServerMessage}
-        >
-          <FiHome color="white" size={38} />;
-        </button>
-      </div>
-    </div>
+    </>
   )
 }
 export default App
