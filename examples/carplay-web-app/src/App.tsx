@@ -241,7 +241,7 @@ function App() {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            filter: 'blur(25px)',
+            filter: 'blur(16px)',
             zIndex: -2,
           }}
         />
