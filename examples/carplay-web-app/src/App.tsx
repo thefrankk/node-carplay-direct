@@ -217,14 +217,15 @@ function App() {
   return (
     <div
       style={{
-        height: '100vh', // Use vh for consistent height
+        height: '105vh', // Use vh for consistent height
+        backgroundSize: '98%', // Start slightly zoomed-in
+
         touchAction: 'none',
         //backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
         backgroundImage: 'url("/esfera_resized.png")', // Reference public folder
         // backgroundImage:
         // 'linear-gradient(to top, #000000, #271a1f, #482d3a, #6a425a, #8c597f, #8c597f, #8c597f, #8c597f, #6a425a, #482d3a, #271a1f, #000000)',
 
-        backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         position: 'relative', // Ensure elements inside are positioned relative to this container
@@ -328,7 +329,7 @@ function App() {
           color: '#000', // Change to your desired color
         }}
       >
-        <FiHome color="white" size={38} />
+        <FiHome color="rgba(80, 80, 80, 0.49)" size={38} />
       </div>
       {/* Right Icon */}
       <div
@@ -341,7 +342,7 @@ function App() {
           color: '#000', // Change to your desired color
         }}
       >
-        <FiHome color="white" size={38} />
+        <FiHome color="rgba(80, 80, 80, 0.49)" size={38} />
       </div>
 
       {/* Top Text and Icons */}
