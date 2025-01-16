@@ -438,7 +438,7 @@ function App() {
           >
             <span
               style={{
-                fontSize: '50px',
+                fontSize: '55px',
                 color: 'rgba(255, 255, 255, 1)',
               }}
             >
@@ -446,7 +446,7 @@ function App() {
             </span>
             <span
               style={{
-                fontSize: '20px',
+                fontSize: '15px',
                 fontWeight: 'normal',
                 color: 'rgba(255, 255, 255, 1)',
               }}
