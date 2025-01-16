@@ -281,8 +281,8 @@ function App() {
         onPointerOut={sendTouchEvent}
         style={{
           position: 'absolute',
-          width: '70%', //82
-          height: '70%', //82
+          width: '72%', //82
+          height: '72%', //82
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
