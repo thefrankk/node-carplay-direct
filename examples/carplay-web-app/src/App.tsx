@@ -218,7 +218,7 @@ function App() {
     <div
       style={{
         height: '105vh', // Use vh for consistent height
-        backgroundSize: '98%', // Start slightly zoomed-in
+        backgroundSize: '102%', // Start slightly zoomed-in
 
         touchAction: 'none',
         //backgroundImage: 'url("/Background_Dark.png")', // Reference public folder
