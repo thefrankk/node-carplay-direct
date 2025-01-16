@@ -348,7 +348,7 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            left: '-15px',
+            left: '-25px',
             top: '50%',
             transform: 'translateY(-50%)',
             display: 'flex',
@@ -407,7 +407,7 @@ function App() {
         <div
           style={{
             position: 'absolute',
-            right: '-15px',
+            right: '-25px',
             top: '46%',
             transform: 'translateY(-50%)',
             cursor: 'pointer', // Pointer cursor for interactivity
