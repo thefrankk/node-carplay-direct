@@ -24,6 +24,8 @@ import { useSocketManager } from './SocketManager'
 import { GaugeComponent } from 'react-gauge-component'
 import GlobalStyle from './utils/GlobalStyle'
 import BatteryGauge from 'react-battery-gauge'
+import Modal from './utils/ModalCarplay'
+import CarPlayDialog from './utils/CarPlayDialog'
 
 const width = window.innerWidth * 0.74
 const height = window.innerHeight * 0.74
@@ -113,6 +115,10 @@ function App() {
         case 'plugged':
           setPlugged(true)
 
+          setFooterText('Connecting with phone..')
+
+          setTimeout(() => setCarPlayConnection(false), 3000) // Simulate update
+
           console.log('plugged')
           break
         case 'unplugged':
@@ -173,6 +179,7 @@ function App() {
       const device = request ? await requestDevice() : await findDevice()
       if (device) {
         setDeviceFound(true)
+        setFooterText('Searching for phone..')
         const payload = {
           config,
         }
@@ -225,6 +232,9 @@ function App() {
     color: isOn ? 'white' : 'gray', // White if turned on, gray if turned off
   })
 
+  const [footerText, setFooterText] = useState('Initializing...')
+  const [showCarPlayConnection, setCarPlayConnection] = useState(true)
+
   const isFOn = true // Example variable to control "F"
   const isNOn = false // Example variable to control "N"
   const isROn = false // Example variable to control "R"
@@ -258,7 +268,7 @@ function App() {
             zIndex: -1, // Ensure this stays behind the content
           }}
         />
-        {isLoading && (
+        {showCarPlayConnection && (
           <div
             style={{
               position: 'absolute',
@@ -269,30 +279,29 @@ function App() {
               alignItems: 'center',
             }}
           >
+            <CarPlayDialog
+              isDay={false}
+              onClose={() => {}}
+              footerText={footerText}
+            />
+
             {deviceFound === false && (
               <button
                 onClick={onClick}
                 rel="noopener noreferrer"
                 style={{
-                  padding: '10px 20px',
-                  backgroundColor: '#ffffff',
+                  backgroundColor: 'rgba(0, 0, 0, 0)', // Add a semi-transparent background                  border: 'none',
+                  position: 'absolute',
                   border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
+
                   zIndex: 32, // Explicitly set z-index
+                  top: '10%', // Move the top of the container to the center
+                  left: '50%', // Move the left of the container to the center
+                  transform: 'translate(-50%, -50%)', // Offset by 50% of its own width and height
                 }}
               >
-                Plug-In Carplay Dongle and Press
+                Plug-In Carplay Dongle and Press /** * */ public test test test
               </button>
-            )}
-            {deviceFound === true && (
-              <RotatingLines
-                strokeColor="grey"
-                strokeWidth="5"
-                animationDuration="0.75"
-                width="96"
-                visible={true}
-              />
             )}
           </div>
         )}
@@ -578,7 +587,7 @@ function App() {
         <div
           style={{
             position: 'fixed',
-            bottom: 0,
+            bottom: -5,
             left: 0,
             width: '100%',
             backgroundColor: 'rgba(66, 68, 73, 0.9)', // 0.9 Slight transparency
