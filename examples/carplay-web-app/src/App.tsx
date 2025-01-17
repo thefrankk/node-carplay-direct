@@ -352,8 +352,7 @@ function App() {
             />
           )}
         </div>
-        {/* Left Icon */}
-
+        {/* Left Icons */}
         <div
           style={{
             position: 'absolute',
@@ -361,94 +360,109 @@ function App() {
             top: '50%',
             transform: 'translateY(-50%)',
             display: 'flex',
-            flexDirection: 'column', // Vertical layout
+            flexDirection: 'column',
             alignItems: 'center',
-            gap: '20px', // Space between the images
+            gap: '20px',
           }}
         >
-          {/* First Icon */}
-          <div>
-            <img
-              src="/assets/izq_on_Dark.png"
-              alt="Icon 1"
-              style={{
-                color: 'green',
-                width: '160px', // Adjust size as needed
-                height: '150px',
-                opacity: 1, // Full opacity for "on" state
-                filter: 'none', // No grayscale for "on" state
-                transition: 'all 0.3s ease', // Smooth transition for visual effects
-              }}
-            />
-          </div>
+          {/* Left Blinker */}
+          <img
+            src="/assets/izq_on_Dark.png"
+            alt="Left Blinker"
+            style={{
+              width: '160px',
+              height: '150px',
+              opacity:
+                state._blinkersValue === 3 || state._blinkersValue === 2
+                  ? 1
+                  : 0,
+              filter:
+                state._blinkersValue === 3 || state._blinkersValue === 2
+                  ? 'none'
+                  : 'grayscale(100%)',
+              transition: 'all 0.3s ease',
+            }}
+          />
 
-          {/* Second Icon */}
-          <div>
-            <img
-              src="/assets/Luces_Dark.png"
-              alt="Icon 2"
-              style={{
-                width: '32px', // Smaller size for "off" state
-                height: '20px',
-                opacity: 0.5, // Reduced opacity for "off" state
-                filter: 'grayscale(100%)', // Grayscale for "off" state
-                transition: 'all 0.3s ease',
-              }}
-            />
-          </div>
+          {/* Beams */}
+          <img
+            src="/assets/Luces_Dark.png"
+            alt="Beams"
+            style={{
+              width: '32px',
+              height: '20px',
+              opacity: state._beamsValue ? 1 : 0,
+              filter: state._beamsValue ? 'none' : 'grayscale(100%)',
+              transition: 'all 0.3s ease',
+            }}
+          />
 
-          {/* Third Icon */}
-          <div>
-            <img
-              src="/assets/low_lights_dark.png"
-              alt="Icon 3"
-              style={{
-                width: '32px', // Adjust size as needed
-                height: '20px',
-                opacity: 1, // Full opacity for "on" state
-                filter: 'none', // No grayscale for "on" state
-                transition: 'all 0.3s ease',
-              }}
-            />
-          </div>
+          {/* Low Lights */}
+          <img
+            src="/assets/low_lights_dark.png"
+            alt="Low Lights"
+            style={{
+              width: '32px',
+              height: '20px',
+              opacity: state._lowLightsValue ? 1 : 0,
+              filter: state._lowLightsValue ? 'none' : 'grayscale(100%)',
+              transition: 'all 0.3s ease',
+            }}
+          />
         </div>
-        {/* Right Icon */}
+
+        {/* Right Icons */}
         <div
           style={{
             position: 'absolute',
             right: '-25px',
-            top: '46%',
+            top: '50%',
             transform: 'translateY(-50%)',
-            cursor: 'pointer', // Pointer cursor for interactivity
             display: 'flex',
-            flexDirection: 'column', // Vertical layout for images
+            flexDirection: 'column',
             alignItems: 'center',
-            gap: '20px', // Space between images
+            gap: '20px',
           }}
-          onClick={() => setIsOn(!isOn)} // Toggle the state on click
         >
-          {/* First Image */}
+          {/* Right Blinker */}
           <img
-            src="/assets/Dcha_Dark.png" // Path to the first PNG image
-            alt="Right directional"
+            src="/assets/Dcha_Dark.png"
+            alt="Right Blinker"
             style={{
-              width: isOn ? '160px' : '70px', // Larger size when on, smaller when off
-              height: isOn ? '150px' : '70px',
-              opacity: isOn ? 1 : 0.2, // Full opacity when on, reduced when off
-              filter: isOn ? 'none' : 'grayscale(100%)', // Grayscale effect when off
+              width: '160px',
+              height: '150px',
+              opacity:
+                state._blinkersValue === 3 || state._blinkersValue === 1
+                  ? 1
+                  : 0,
+              filter:
+                state._blinkersValue === 3 || state._blinkersValue === 1
+                  ? 'none'
+                  : 'grayscale(100%)',
+              transition: 'all 0.3s ease',
+            }}
+          />
+          {/* Parking Image */}
+          <img
+            src="/assets/parking_dark.png"
+            alt="Parking"
+            style={{
+              width: '35px', // Set size dynamically
+              height: '25px',
+              opacity: state._brakeValue === 1 ? 1 : 0, // Full opacity if brake is active
               transition: 'all 0.3s ease', // Smooth transition for changes
             }}
           />
 
-          {/* Second Image */}
+          {/* Seatbelt */}
           <img
-            src="/assets/parking_dark.png" // Path to the second PNG image
-            alt="Second Icon"
+            src="/assets/Cinturon_Dark.png"
+            alt="Seatbelt"
             style={{
-              width: isOn ? '35px' : '25px', // Adjust size based on state
-              height: isOn ? '25px' : '25px',
-              opacity: isOn ? 1 : 0.5, // Reduced opacity for "off" state
-              filter: isOn ? 'none' : 'grayscale(100%)', // Grayscale effect for "off" state
+              width: '30px',
+              height: '35px',
+              opacity: state._seatbeltValue ? 1 : 0,
+              filter: state._seatbeltValue ? 'none' : 'grayscale(100%)',
               transition: 'all 0.3s ease',
             }}
           />
@@ -467,7 +481,7 @@ function App() {
             width: '35%', // Adjust width to control spacing
           }}
         >
-          {/* Left Section: FNR */}
+          {/* FNR Management */}
           <div
             style={{
               display: 'flex',
@@ -487,7 +501,18 @@ function App() {
                 margin: '2px',
               }}
             >
-              <span style={leftSectionStyle(isFOn)}>F</span>
+              <span
+                style={{
+                  fontSize: state._fnrValue === 0 ? '36px' : '30px', // Larger font size for active
+                  color:
+                    state._fnrValue === 0
+                      ? 'rgba(255, 255, 255, 1)' // Highlight active
+                      : 'rgba(255, 255, 255, 0.5)', // Dim inactive
+                  transition: 'all 0.3s ease', // Smooth transitions
+                }}
+              >
+                F
+              </span>
             </div>
 
             {/* N */}
@@ -500,7 +525,18 @@ function App() {
                 margin: '2px',
               }}
             >
-              <span style={leftSectionStyle(isNOn)}>N</span>
+              <span
+                style={{
+                  fontSize: state._fnrValue === 1 ? '36px' : '30px', // Larger font size for active
+                  color:
+                    state._fnrValue === 1
+                      ? 'rgba(255, 255, 255, 1)' // Highlight active
+                      : 'rgba(255, 255, 255, 0.5)', // Dim inactive
+                  transition: 'all 0.3s ease', // Smooth transitions
+                }}
+              >
+                N
+              </span>
             </div>
 
             {/* R */}
@@ -513,18 +549,29 @@ function App() {
                 margin: '2px',
               }}
             >
-              <span style={leftSectionStyle(isROn)}>R</span>
+              <span
+                style={{
+                  fontSize: state._fnrValue === 2 ? '36px' : '30px', // Larger font size for active
+                  color:
+                    state._fnrValue === 2
+                      ? 'rgba(255, 255, 255, 1)' // Highlight active
+                      : 'rgba(255, 255, 255, 0.5)', // Dim inactive
+                  transition: 'all 0.3s ease', // Smooth transitions
+                }}
+              >
+                R
+              </span>
             </div>
           </div>
 
-          {/* Center Section: 120 MPH */}
+          {/* Center Section: Dynamic Speed */}
           <div
             style={{
               textAlign: 'center',
               display: 'flex',
-              flexDirection: 'column', // Stack "120" and "MPH"
+              flexDirection: 'column', // Stack speed and unit
               alignItems: 'center',
-              marginLeft: '25px', // Move slightly to the left
+              marginLeft: '25px',
             }}
           >
             <span
@@ -533,7 +580,7 @@ function App() {
                 color: 'rgba(255, 255, 255, 1)',
               }}
             >
-              120
+              {state._currentSpeed || 0}
             </span>
             <span
               style={{
@@ -546,13 +593,13 @@ function App() {
             </span>
           </div>
 
-          {/* Right Section: 55% + Battery */}
+          {/* Right Section: Dynamic Battery */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               textAlign: 'right',
-              position: 'relative', // Allows fine positioning
+              position: 'relative',
               right: '-25px', // Moves the section to the right without affecting others
             }}
           >
@@ -563,10 +610,10 @@ function App() {
                 marginRight: '5px', // Add space between text and icon
               }}
             >
-              55%
+              {state._batteryValue || 0}%
             </span>
             <BatteryGauge
-              value={55}
+              value={state._batteryValue || 0}
               size={50}
               animated={true}
               customization={{
