@@ -637,15 +637,59 @@ function App() {
             bottom: -5,
             left: 0,
             width: '100%',
-            backgroundColor: 'rgba(66, 68, 73, 0.9)', // 0.9 Slight transparency
             display: 'flex',
             justifyContent: 'space-around',
             alignItems: 'center',
-            zIndex: 32,
-
             padding: '18px 0',
+            zIndex: 32,
           }}
         >
+          {/* Left Buttons */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              transform: 'translateX(500px)  translateY(5px)', // Move group closer to the Home button
+            }}
+          >
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                fontSize: '20px',
+                transform: `rotate(${
+                  state.button1Rotation || 25
+                }deg) translateY(-20px)`, // Adjust rotation and position
+
+                cursor: 'pointer',
+                color: 'rgba(129, 130, 133, 0.9)',
+                transition: 'transform 0.3s ease',
+
+                marginRight: '25px', // Reduce spacing
+              }}
+              onClick={() => {}}
+            >
+              ECO
+            </button>
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                fontSize: '25px',
+                transform: `rotate(${state.button2Rotation || 0}deg)`,
+                cursor: 'pointer',
+                color: 'rgba(255, 255, 255, 0.9)',
+
+                transition: 'transform 0.3s ease',
+                marginRight: '-25px',
+              }}
+              onClick={() => {}}
+            >
+              NORMAL
+            </button>
+          </div>
+
+          {/* Home Button */}
           <button
             style={{
               backgroundColor: 'transparent',
@@ -662,6 +706,48 @@ function App() {
           >
             <FiHome color="white" size={50} />
           </button>
+
+          {/* Right Buttons */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              transform: 'translateX(-525px)  translateY(5px)', // Move group closer to the Home button
+            }}
+          >
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                fontSize: '20px',
+                transform: `rotate(${state.button3Rotation || 0}deg)`,
+                cursor: 'pointer',
+                color: 'rgba(129, 130, 133, 0.9)',
+                transition: 'transform 0.3s ease',
+                marginRight: '-25px',
+              }}
+              onClick={() => {}}
+            >
+              SPORT
+            </button>
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                fontSize: '20px',
+                transform: `rotate(${
+                  state.button1Rotation || -25
+                }deg) translateY(-20px)`, // Adjust rotation and position                cursor: 'pointer',
+                color: 'rgba(129, 130, 133, 0.9)',
+
+                transition: 'transform 0.3s ease',
+                marginLeft: '45px',
+              }}
+              onClick={() => {}}
+            >
+              RACE
+            </button>
+          </div>
         </div>
       </div>
     </>

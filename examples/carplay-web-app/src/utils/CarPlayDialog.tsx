@@ -32,7 +32,7 @@ const CarPlayDialog: React.FC<CarPlayDialogProps> = ({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: 32,
+      zIndex: 30,
     },
     dialogBox: {
       backgroundColor: backgroundColor,
