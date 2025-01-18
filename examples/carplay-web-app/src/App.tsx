@@ -649,7 +649,7 @@ function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              transform: ' translateY(-5px) translateX(100px)', // Move group closer to the Home button
+              transform: ' translateY(-20px) translateX(100px)', // Move group closer to the Home button
             }}
           >
             <button
@@ -658,8 +658,8 @@ function App() {
                 border: 'none',
                 fontSize: '20px',
                 transform: `rotate(${
-                  state.button1Rotation || 25
-                }deg) translateY(-20px)`, // Adjust rotation and position
+                  state.button1Rotation || 0
+                }deg) translateY(0px)`, // Adjust rotation and position //25 -20
 
                 cursor: 'pointer',
                 color: 'rgba(129, 130, 133, 0.9)',
@@ -712,7 +712,7 @@ function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              transform: ' translateY(-5px) translateX(-115px)', // Move group closer to the Home button
+              transform: ' translateY(-20px) translateX(-115px)', // Move group closer to the Home button
             }}
           >
             <button
@@ -736,8 +736,8 @@ function App() {
                 border: 'none',
                 fontSize: '20px',
                 transform: `rotate(${
-                  state.button1Rotation || -25
-                }deg) translateY(-20px)`, // Adjust rotation and position                cursor: 'pointer',
+                  state.button1Rotation || 0
+                }deg) translateY(0px)`, // Adjust rotation and position                cursor: 'pointer', //-25 20
                 color: 'rgba(129, 130, 133, 0.9)',
 
                 transition: 'transform 0.3s ease',
