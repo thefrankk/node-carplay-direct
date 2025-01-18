@@ -649,14 +649,14 @@ function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              transform: ' translateY(-20px) translateX(100px)', // Move group closer to the Home button
+              transform: ' translateY(-20px) translateX(110px)', // Move group closer to the Home button
             }}
           >
             <button
               style={{
                 backgroundColor: 'transparent',
                 border: 'none',
-                fontSize: '20px',
+                fontSize: '15px',
                 transform: `rotate(${
                   state.button1Rotation || 0
                 }deg) translateY(0px)`, // Adjust rotation and position //25 -20
@@ -665,7 +665,7 @@ function App() {
                 color: 'rgba(129, 130, 133, 0.9)',
                 transition: 'transform 0.3s ease',
 
-                marginRight: '15px', // Reduce spacing
+                marginRight: '5px', // Reduce spacing
               }}
               onClick={() => {}}
             >
@@ -675,7 +675,7 @@ function App() {
               style={{
                 backgroundColor: 'transparent',
                 border: 'none',
-                fontSize: '25px',
+                fontSize: '20px',
                 transform: `rotate(${state.button2Rotation || 0}deg)`,
                 cursor: 'pointer',
                 color: 'rgba(255, 255, 255, 0.9)',
@@ -712,14 +712,14 @@ function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              transform: ' translateY(-30px) translateX(-115px)', // Move group closer to the Home button
+              transform: ' translateY(-20px) translateX(-135px)', // Move group closer to the Home button
             }}
           >
             <button
               style={{
                 backgroundColor: 'transparent',
                 border: 'none',
-                fontSize: '20px',
+                fontSize: '15px',
                 transform: `rotate(${state.button3Rotation || 0}deg)`,
                 cursor: 'pointer',
                 color: 'rgba(129, 130, 133, 0.9)',
@@ -734,7 +734,7 @@ function App() {
               style={{
                 backgroundColor: 'transparent',
                 border: 'none',
-                fontSize: '20px',
+                fontSize: '15px',
                 transform: `rotate(${
                   state.button1Rotation || 0
                 }deg) translateY(0px)`, // Adjust rotation and position                cursor: 'pointer', //-25 20
