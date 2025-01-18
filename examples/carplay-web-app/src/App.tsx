@@ -649,7 +649,7 @@ function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              transform: 'translateX(500px)  translateY(5px)', // Move group closer to the Home button
+              transform: ' translateY(5px)', // Move group closer to the Home button
             }}
           >
             <button
@@ -712,7 +712,7 @@ function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              transform: 'translateX(-525px)  translateY(5px)', // Move group closer to the Home button
+              transform: ' translateY(5px)', // Move group closer to the Home button
             }}
           >
             <button
