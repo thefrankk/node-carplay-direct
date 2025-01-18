@@ -665,7 +665,7 @@ function App() {
                 color: 'rgba(129, 130, 133, 0.9)',
                 transition: 'transform 0.3s ease',
 
-                marginRight: '25px', // Reduce spacing
+                marginRight: '15px', // Reduce spacing
               }}
               onClick={() => {}}
             >
@@ -681,7 +681,7 @@ function App() {
                 color: 'rgba(255, 255, 255, 0.9)',
 
                 transition: 'transform 0.3s ease',
-                marginRight: '-25px',
+                marginRight: '-15px',
               }}
               onClick={() => {}}
             >
@@ -712,7 +712,7 @@ function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              transform: ' translateY(-20px) translateX(-115px)', // Move group closer to the Home button
+              transform: ' translateY(-30px) translateX(-115px)', // Move group closer to the Home button
             }}
           >
             <button
@@ -741,7 +741,7 @@ function App() {
                 color: 'rgba(129, 130, 133, 0.9)',
 
                 transition: 'transform 0.3s ease',
-                marginLeft: '45px',
+                marginLeft: '35px',
               }}
               onClick={() => {}}
             >
